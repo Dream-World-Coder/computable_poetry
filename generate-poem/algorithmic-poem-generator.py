@@ -5,11 +5,79 @@ import random
 from typing import List, Dict, Tuple, Any
 
 class PoemGenerator:
-    database_path = 'database/db/words.json'
-    words_cache: Dict[int, List[Dict[str, Any]]] = {}  # cache valid words by matra
-
     def __init__(self, pattern: str = '4|4|2'):
         self.pattern = pattern
+        self.database_path = 'database/db/words.json'
+        self.words_cache: Dict[int, List[Dict[str, Any]]] = {}  # cache valid words by matra
+        self.grammar = {
+            # Poem structure
+            "Poem":     [["CoupletA", "CoupletB"]],
+            "CoupletA": [["LineA1", "LineA2"]],
+            "CoupletB": [["LineB1", "LineB2"]],
+            # Lines
+            "LineA1":   [["NP", "VP", "RhymeA"]],
+            "LineA2":   [["NP", "VP", "RhymeB"]],
+            "LineB1":   [["NP", "VP", "RhymeA"]],
+            "LineB2":   [["NP", "VP", "RhymeB"]],
+            # Phrases
+            "NP":       [["PRON"], ["DT", "NOUN"], ["ADJ", "NOUN"]],
+            "VP":       [["VERB"], ["VERB", "NP"], ["VERB", "ADV"]],
+            # Rhymes
+            "RhymeA":   [["NOUN"], ["ADJ"]],
+            "RhymeB":   [["NOUN"], ["ADJ"]],
+            # POS expansions
+            "PRON":     [["PRP"], ["WP"]],
+            "NOUN":     [["NN"], ["NNS"], ["NNP"], ["NNPS"], ["NPF"]],
+            "ADJ":      [["JJ"], ["JJR"], ["JJS"]],
+            "VERB":     [["VBD"], ["VBG"], ["VBN"], ["VBP"], ["VBZ"]],
+            "ADV":      [["RB"], ["RBR"], ["RBS"]]
+        }
+        self.__grammar = {
+            # Poem structure
+            "Poem":     [["CoupletA", "CoupletB"]],
+            "CoupletA": [["LineA1", "LineA2"]],
+            "CoupletB": [["LineB1", "LineB2"]],
+            # Lines
+            "LineA1":   [["NP", "VP", "RhymeA"]],
+            "LineA2":   [["NP", "VP", "RhymeB"]],
+            "LineB1":   [["NP", "VP", "RhymeA"]],
+            "LineB2":   [["NP", "VP", "RhymeB"]],
+            # Phrases
+            "NP":       [["PRON"], ["DT", "NOUN"], ["ADJ", "NOUN"]],
+            "VP":       [["VERB"], ["VERB", "NP"], ["VERB", "ADV"]],
+            # Rhymes
+            "RhymeA":   [["NOUN"], ["ADJ"]],
+            "RhymeB":   [["NOUN"], ["ADJ"]],
+            # POS expansions
+            "PRON":     [["PRP"], ["WP"]],
+            "NOUN":     [["NN"], ["NNS"], ["NNP"], ["NNPS"], ["NPF"]],
+            "ADJ":      [["JJ"], ["JJR"], ["JJS"]],
+            "VERB":     [["VBD"], ["VBG"], ["VBN"], ["VBP"], ["VBZ"]],
+            "ADV":      [["RB"], ["RBR"], ["RBS"]]
+        }
+        self.fallback_map: Dict[str, List[str]] = {
+            # nouns
+            "NNPS": ["NNS", "NNP", "NPF", "NN"],
+            "NNS":  ["NNPS", "NNP", "NPF", "NN"],
+            "NNP":  ["NNPS", "NNS", "NPF", "NN"],
+            "NPF":  ["NNPS", "NNS", "NNP", "NN"],
+            "NN":   ["NNS", "NNP", "NPF", "NNPS"],
+            # adjectives
+            "JJS":  ["JJR", "JJ"],
+            "JJR":  ["JJ", "JJS"],
+            "JJ":   ["JJR", "JJS"],
+            # verbs
+            "VBD":  ["VBP", "VBZ", "VBG", "VBN"],
+            "VBP":  ["VBZ", "VBD", "VBG", "VBN"],
+            "VBZ":  ["VBP", "VBD", "VBG", "VBN"],
+            "VBG":  ["VBD", "VBP", "VBZ", "VBN"],
+            "VBN":  ["VBD", "VBP", "VBZ", "VBG"],
+            # adverbs
+            "RBS":  ["RBR", "RB"],
+            "RBR":  ["RB", "RBS"],
+            "RB":   ["RBR", "RBS"],
+            # pronouns, determiners, etc: fallback to any POS if needed
+        }
 
     def determine_chhondo(self, pattern) -> Tuple[str, List[int]]:
         if not pattern:
@@ -73,7 +141,7 @@ class PoemGenerator:
         if not words_list:
             raise Exception("Unable to retrieve json words data")
 
-        poem = []
+        poem:List[str] = []
         is_odd_line = True
         last_word_of_prev_line = ''
 
@@ -108,149 +176,167 @@ class PoemGenerator:
             last_word_of_prev_line = line_words[-1]
         return poem
 
-    # ---- #
-    def load_words(self) -> List[Dict[str,Any]]:
-        with open(self.database_path) as f:
-            data = json.load(f)
-        return data.get('words', [])
+    def generate_grammar(self, no_of_words: int = 5) -> List[str]:
+        """
+        Generate a sequence of POS tags by expanding the <Poem> grammar.
+        # output ["POS1","POS2","POS3"..."POSn"] which directly can be re-written as terminals
+        # like NN, PRP or JJ etc
+        # final all such non-terminals here:
+        # NN,NPF,NNS,NNP,NNPS,CD,JJ,JJR,JJS,PRP,VBD,VBG,VBN,VBP,VBZ,RB,RBR,RBS,IN,DT,CC,MD,UH,EX,FW,TO,WDT,WP,WRB,XX
 
-    def find_valid(self, words: List[Dict[str, Any]], ch: str, m: int, pos: str = None) -> List[Dict[str, Any]]:
-        key = (ch, m)
-        if key not in self.words_cache:
-            self.words_cache[key] = [w for w in words if w['totalMatra'].get(ch,0)==m]
-        cand = self.words_cache[key]
-        if pos:
-            pos_cand = [w for w in cand if w.get('pos')==pos]
-            return pos_cand or cand
-        return cand
+        Args:
+            no_of_words: maximum number of POS tags to return.
+        Returns:
+            A list of POS tags (e.g. ["DT", "NN", "VBP", ...]) of length <= no_of_words.
+        """
+        def is_nonterminal(symbol: str) -> bool:
+            return symbol in self.grammar
 
-    def generate_poem_with_grammar1(self, lines_to_generate: int = 2):
-        # lines_to_generate: int = 2, not to be as param
-        # first check the self.pattern,
-        # chhondo, extracted_pattern = self.determine_chhondo(self.pattern)
-        # the sentence will have len(extracted_pattern) words [for now, later i will wrap a sentence in 2-4 lines, for more poetic feel]
-        # so make the sentence with the grammar,
-        # eg final sentence = <NOUN> <NOUN> <VERB> <ADJ> <NOUN>
-        # now we know the matra and chhondo, but as we also have access to POS now, we will look por word.POS and match the resultant sentence
-        # this is the only difference from generate_random_poem, that is consideration of the word.POS alongside word.totalMatra.chhondo
-        # NOW MAKE IT, CAREFULLY OBSERVE THE generate_random_poem
-        # ——————————————————————
-        # 1) determine chhondo & pattern
-        chhondo, extracted_pattern = self.determine_chhondo(self.pattern)
-        L = len(extracted_pattern)
+        def expand(symbol: str) -> List[str]:
+            # If terminal (POS tag), return it
+            if symbol not in self.grammar:
+                return [symbol]
+            # Choose one of the productions
+            production = random.choice(self.grammar[symbol])
+            result: List[str] = []
+            for sym in production:
+                result.extend(expand(sym))
+            return result
 
-        # 2) define a tiny POS-sequence grammar for child-poem feel
-        grammar_rules: Dict[int, List[str]] = {
-            2: ["NOUN", "VERB"],
-            3: ["NOUN", "ADJ", "NOUN"],
-            4: ["ADJ", "NOUN", "VERB", "ADJ"],
-            5: ["NOUN", "NOUN", "VERB", "ADJ", "NOUN"],
-            # extend as needed...
-        }
-        if L not in grammar_rules:
-            raise Exception(f"No grammar rule for sentence length {L}")
+        # Expand the start symbol
+        pos_sequence = expand("Poem")
+        # Truncate or return full sequence
+        return pos_sequence[:no_of_words]
 
-        pos_sequence = grammar_rules[L]
+    def _generate_couplet(self, no_of_words: int = 5) -> List[List[str]]:
+        """
+        Generate a 4-line couplet structure, each line expanded into POS tags.
 
-        # 3) load word database
+        Args:
+            no_of_words: approximate maximum number of POS tags per line.
+        Returns:
+            A list of four lists, each containing POS tags for one line.
+        """
+        def expand(symbol: str) -> List[str]:
+            # Terminal POS-tag reached
+            if symbol not in self.grammar:
+                return [symbol]
+            # Randomly select one production for this non-terminal
+            production = random.choice(self.grammar[symbol])
+            result: List[str] = []
+            for sym in production:
+                result.extend(expand(sym))
+            return result
+
+        # Define the four line symbols
+        lines = ["LineA1", "LineA2", "LineB1", "LineB2"]
+        expanded_lines: List[List[str]] = []
+
+        for line_sym in lines:
+            tags = expand(line_sym)
+            # Truncate to at most no_of_words tags
+            expanded_lines.append(tags[:no_of_words])
+
+        return expanded_lines
+
+    def _generate_poem_with_grammar(self, lines_to_generate: int = 2) -> List[str]:
+        chhondo, extracted_pattern = self.determine_chhondo('4|4|4|2')
+
         with open(self.database_path, 'r') as f:
             data = json.load(f)
         words_list = data.get("words") or []
         if not words_list:
             raise Exception("Unable to retrieve json words data")
 
-        # 4) pick one word per slot
-        used = set()
-        sentence_tokens: List[str] = []
+        matra_four_words = self.find_valid_words(words_list, chhondo, 4)
+        matra_two_words = self.find_valid_words(words_list, chhondo, 2)
 
-        for _ in range(lines_to_generate):
-            for idx, matra in enumerate(extracted_pattern):
-                desired_pos = pos_sequence[idx]
-                # matra-filtered
-                candidates = self.find_valid_words(words_list, chhondo, matra)
-                # POS-filtered
-                pos_candidates = [w for w in candidates if w.get("pos") == desired_pos]
-                pool = pos_candidates or candidates  # fallback if no POS match
-                # avoid repetition
-                fresh = [w for w in pool if w["word"] not in used] or pool
-                if not fresh:
-                    raise Exception(f"No words for matra={matra}, POS={desired_pos}")
-                choice = random.choice(fresh)
-                used.add(choice["word"])
-                sentence_tokens.append(choice["word"])
+        poem:List[str] = []
+        line:List[str] = []
 
-        # 5) return the joined sentence
-        return " ".join(sentence_tokens)
+        couplet_grammar:List[List[str]] = self.generate_couplet(4) # 4 because 4,4,4,2 now, later do 2+2,4,4,4,2
+        for line_grammar in couplet_grammar:
+            print(line_grammar)
+            line = []
+            for idx, word_pos in enumerate(line_grammar):
+                print(word_pos)
+                try:
+                    if (idx != len(line_grammar)-1):
+                        random_selected_word = random.choice([word for word in matra_four_words if word['POS'] == word_pos])['word']
+                    else:
+                        random_selected_word = random.choice([word for word in matra_two_words if word['POS'] == word_pos])['word']
+                    line.append(random_selected_word)
+                except Exception as e:
+                    print(e)
+                    print("matching POS not found")
+            poem.append(" ".join(line))
 
-    def generate_poem_with_grammar2(self, lines_to_generate: int = 2) -> List[str]:
-        # Build a 4-line poem with AABB rhyme scheme
-        ch, pattern = self.determine_chhondo(self.pattern)
-        words = self.load_words()
+        return poem
 
-        # Phrase grammar rules
-        grammar = {
-            'NP': [['PRON'], ['DT','NOUN'], ['ADJ','NOUN']],
-            'VP': [['VERB'], ['VERB','NP'], ['VERB','ADV']],
-        }
-        # number of slots before rhyme = total pattern length -1
-        slots_before = len(pattern) - 1
+    def expand(self, symbol: str) -> List[str]:
+        # Terminal POS-tag reached
+        if symbol not in self.grammar:
+            return [symbol]
+        # Randomly select one production for this non-terminal
+        production = random.choice(self.grammar[symbol])
+        result: List[str] = []
+        for sym in production:
+            result.extend(self.expand(sym))
+        return result
 
-        # Precompute valid NP+VP rule pairs matching slots_before
-        valid_pairs = []  # List of (np_rule, vp_rule)
-        for np_rule in grammar['NP']:
-            np_count = sum(1 for t in np_rule if t not in ['NP','VP'])
-            for vp_rule in grammar['VP']:
-                vp_count = sum(1 for t in vp_rule if t not in ['NP','VP'])
-                if np_count + vp_count == slots_before:
-                    valid_pairs.append((np_rule, vp_rule))
-        if not valid_pairs:
-            raise Exception(f"No NP+VP combination fits pattern length {len(pattern)}")
+    def generate_couplet(self, no_of_words: int = 5) -> List[List[str]]:
+        # Expand each line and truncate
+        lines = ["LineA1", "LineA2", "LineB1", "LineB2"]
+        return [self.expand(line)[:no_of_words] for line in lines]
 
-        def make_line(rhyme_pos: str) -> str:
-            # choose one NP and VP rule that fit
-            np_rule, vp_rule = random.choice(valid_pairs)
-            tokens = []
-            # generate NP tokens
-            for t in np_rule:
-                matra = pattern[len(tokens)]
-                candidates = self.find_valid(words, ch, matra, pos=t)
-                tokens.append(random.choice(candidates)['word'])
-            # generate VP tokens
-            for t in vp_rule:
-                if t in ['NP','VP']:
-                    continue
-                matra = pattern[len(tokens)]
-                candidates = self.find_valid(words, ch, matra, pos=t)
-                tokens.append(random.choice(candidates)['word'])
-            # rhyme slot
-            matra = pattern[len(tokens)]
-            rhyme_candidates = self.find_valid(words, ch, matra, pos=rhyme_pos)
-            tokens.append(random.choice(rhyme_candidates)['word'])
-            return ' '.join(tokens)
+    def generate_poem_with_grammar(self, lines_to_generate: int = 2) -> List[str]:
+        # Load word list from JSON database
+        with open(self.database_path, 'r', encoding='utf-8') as f:
+            data = json.load(f)
+        words_list = data.get("words", [])
+        if not words_list:
+            raise Exception("Unable to retrieve words from database")
 
-        # generate four lines: lines 1-2 rhyme with NOUN, 3-4 rhyme with ADJ
-        line1 = make_line('NOUN')
-        line2 = make_line('NOUN')
-        line3 = make_line('ADJ')
-        line4 = make_line('ADJ')
+        # Generate the POS patterns for a single couplet (4 lines)
+        couplet_patterns = self.generate_couplet(lines_to_generate)
 
-        # enforce rhyme by last character match
-        def enforce_rhyme(prev: str, current: str, pos: str) -> str:
-            end_char = prev.split()[-1][-1]
-            last_word = current.split()[-1]
-            if last_word.endswith(end_char):
-                return current
-            # find replacement
-            repl = [w for w in words if w['word'].endswith(end_char) and w.get('pos')==pos]
-            if repl:
-                return ' '.join(current.split()[:-1] + [random.choice(repl)['word']])
-            return current
+        used_words = set()
+        poem_lines: List[str] = []
 
-        line2 = enforce_rhyme(line1, line2, 'NOUN')
-        line4 = enforce_rhyme(line3, line4, 'ADJ')
+        # helper to pick a word with fallback, no duplicates
+        def pick_word(desired_pos: str, matra_group: List[Dict[str, Any]]) -> str:
+            # try exact matches first
+            candidates = [w for w in matra_group if w['POS'] == desired_pos and w['word'] not in used_words]
+            # then fallbacks
+            for fallback_pos in self.fallback_map.get(desired_pos, []):
+                if not candidates:
+                    candidates = [w for w in matra_group if w['POS'] == fallback_pos and w['word'] not in used_words]
+            if not candidates:
+                raise Exception(f"No candidates for POS {desired_pos} or fallbacks")
+            choice = random.choice(candidates)
+            used_words.add(choice['word'])
+            return choice['word']
 
-        return [line1, line2, line3, line4]
-    # ---- #
+        # For each line pattern, pick words
+        for line_pattern in couplet_patterns:
+            line_words: List[str] = []
+            # decide matra group based on last word's position if needed
+            # here using same matra list for all positions
+            for pos in line_pattern:
+                word = pick_word(pos, words_list)
+                line_words.append(word)
+            poem_lines.append(" ".join(line_words))
+
+        return poem_lines
+
+# unsure about the length of words, as for higher matra, there can be multiple words
+# so total_words != len(extracted_pattern)
+# but for smaller matra, its same [upto 3] & almost same for matra == 4
+# so i'll use a fixed pattern for this,
+# it will be 4(2+2)|4|4|2 pattern so 5 words in each line
+# so have to expand the grammar to 5 words
+
+
 
 if __name__ == "__main__":
     pattern = "4|4|4|2"
@@ -259,7 +345,7 @@ if __name__ == "__main__":
     pg = PoemGenerator(pattern)
     out_dir = os.path.join(os.getcwd(), 'generate-poem')
 
-
+    '''
     op_file = os.path.join(out_dir, 'poem-op.txt')
     poem = pg.generate_random_poem(lines_to_generate, match_last)
     with open(op_file, 'a', encoding='utf-8') as f:
@@ -274,14 +360,25 @@ if __name__ == "__main__":
 
     with open(op_file, 'a', encoding='utf-8') as f:
         f.write(f"\n{pattern} \n----------\n")
-        f.write(f"{"".join(pg.generate_poem_with_grammar1())}\n")
+        f.write(f"{"".join(pg.generate_poem_with_grammar())}\n")
         f.write('\n')
 
-    poem = pg.generate_poem_with_grammar2()
+    poem = pg.generate_poem_with_grammar()
     with open(op_file, 'a', encoding='utf-8') as f:
         f.write(f"\n{pattern} \n----------\n")
         for line in poem:
             f.write(f"{"".join(line)}\n")
+        f.write('\n')
+    '''
+
+    poem = pg.generate_poem_with_grammar()
+
+    op_file = os.path.join(out_dir, 'output.txt')
+    with open(op_file, 'a', encoding='utf-8') as f:
+        f.write(f"\n{'4|4|4|2 : fixed'} \n----------\n")
+        for line in poem:
+            print(line)
+            f.write(f"{line}\n")
         f.write('\n')
 
 

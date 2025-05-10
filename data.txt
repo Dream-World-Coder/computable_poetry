@@ -35,17 +35,30 @@
 | **XX**    | Unknown or other — token not in set      | e.g. weird symbols or unrecognized tokens |
 
 
-<Poem>       ::= <CoupletA> <CoupletB>
+---
 
-<CoupletA>   ::= <LineA1> <LineA2>    # A-rhyme couplet
-<CoupletB>   ::= <LineB1> <LineB2>    # B-rhyme couplet
+/-\|/-\|/-\
+\_/|\_/|\_/
+
+---
+
+generate 2 lines for now, first 1=1 then later do 1 long line splitted
+
+<Poem>       ::= <CoupletA>
+                 <CoupletB>
+
+<CoupletA>   ::= <LineA1 @>
+                <LineA2 &>
+
+<CoupletB>   ::= <LineB1 @>
+                <LineB2 &>
 
 <LineA1>     ::= <NP> <VP> <RhymeA>
-<LineA2>     ::= <NP> <VP> <RhymeA>
-<LineB1>     ::= <NP> <VP> <RhymeB>
+<LineA2>     ::= <NP> <VP> <RhymeB>
+
+<LineB1>     ::= <NP> <VP> <RhymeA>
 <LineB2>     ::= <NP> <VP> <RhymeB>
 
-# Phrase structure using Penn tags:
 <NP>         ::= <PRON>| <DT> <NOUN>| <ADJ> <NOUN>
 
 <VP>         ::= <VERB>| <VERB> <NP>| <VERB> <ADV>
@@ -54,6 +67,8 @@
 <RhymeA>     ::= <NOUN> | <ADJ>
 <RhymeB>     ::= <NOUN> | <ADJ>
 
+
+-----------------------------------------
 # Terminal POS → actual words
 <PRON>       ::= “আমি” | “তুমি” | “সে” | …
 <DT>         ::= “একটি” | “এই” | “সেই” | …
@@ -72,3 +87,22 @@
 # now we know the matra and chhondo, but as we also have access to POS now, we will look por word.POS and match the resultant sentence
 # this is the only difference from generate_random_poem, that is consideration of the word.POS alongside word.totalMatra.chhondo
 # NOW MAKE IT, CAREFULLY OBSERVE THE generate_random_poem
+
+
+I want a grammar preferably cfg, to generate a poem \[rhyme], but for rhyming its better to have memory \[that is last word of line 1 & 3 -> end with same type of pronunciation & 2 & 4 also same pattern], terminals will be randomly chosen from db \[based on pos] <Poem>       ::= <CoupletA> <CoupletB>
+
+<CoupletA>   ::= <LineA1> <LineA2>
+
+<CoupletB>   ::= <LineB1> <LineB2>
+
+<LineA1>     ::= <NP> <VP> <RhymeA> <LineA2>     ::= <NP> <VP> <RhymeB>
+
+<LineB1>     ::= <NP> <VP> <RhymeA> <LineB2>     ::= <NP> <VP> <RhymeB>
+
+<NP>         ::= <PRON>| <DT> <NOUN>| <ADJ> <NOUN>
+
+<VP>         ::= <VERB>| <VERB> <NP>| <VERB> <ADV>
+
+# Rhyme slots—same tag structure in each couplet
+
+<RhymeA>     ::= <NOUN> | <ADJ> <RhymeB>     ::= <NOUN> | <ADJ>
