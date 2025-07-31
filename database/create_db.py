@@ -58,4 +58,4 @@ def create_word_database(read_file="passage.txt", write_file="db/words.json"):
 
 
 if __name__=="__main__":
-    create_word_database()
+    create_word_database(read_file='db/words.txt', write_file="db/selective-words.json")

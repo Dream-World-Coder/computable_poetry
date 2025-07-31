@@ -1,115 +1,272 @@
 import re
 
-bangla_vowels: set[tuple[str, str]] = {
-    ("অ", ""), ("আ", "া"), ("ই", "ি"), ("ঈ", "ী"), ("উ", "ু"),
-    ("ঊ", "ূ"), ("ঋ", "ৃ"), ("এ", "ে"), ("ঐ", "ৈ"), ("ও", "ো"), ("ঔ", "ৌ")
-}
+class SplitBanglaSyllables:
+  def __init__(self):
+    self.bangla_vowels: set[tuple[str, str]] = {
+      # (পূর্ণরূপ, কার)
+      ("অ", ""),
+      ("আ", "া"),
+      ("ই", "ি"),
+      ("ঈ", "ী"),
+      ("উ", "ু"),
+      ("ঊ", "ূ"),
+      ("ঋ", "ৃ"),
+      ("এ", "ে"),
+      ("ঐ", "ৈ"),
+      ("ও", "ো"),
+      ("ঔ", "ৌ")
+    }
 
-bangla_consonants: set[str] = {
-    "ক", "খ", "গ", "ঘ", "ঙ", "চ", "ছ", "জ", "ঝ", "ঞ",
-    "ট", "ঠ", "ড", "ঢ", "ণ", "ত", "থ", "দ", "ধ", "ন",
-    "প", "ফ", "ব", "ভ", "ম", "য", "র", "ল", "শ", "ষ", "স", "হ",
-    "ড়", "ঢ়", "য়"
-}
+    self.bangla_consonants: set[str] = {
+      # first ২৫ স্পর্শধ্বনি
+      "ক", "খ", "গ", "ঘ", "ঙ", # কণ্ঠ
+      "চ", "ছ", "জ", "ঝ", "ঞ", # তালব্য
+      "ট", "ঠ", "ড", "ঢ", "ণ", # মূর্ধন্য
+      "ত", "থ", "দ", "ধ", "ন", # দন্ত
+      "প", "ফ", "ব", "ভ", "ম", # ঔষ্ট
 
-bangla_special_chars: set[str] = {"ং", "ঃ", "ঁ"}  # Anusvara, Visarga, Candrabindu
+      "য", "র", "ল",
+      "শ", "ষ", "স", "হ",
+      "ড়", "ঢ়", "য়", "ৎ", # "ৎ" = ত + ্
+      " ং", ":", " ঁ"
+    }
 
-bangla_vowels_flattened: set[str] = {char for tup in bangla_vowels for char in tup if char}
-bangla_independent_vowels: set[str] = {tup[0] for tup in bangla_vowels}
-bangla_vowel_diacritics: set[str] = {tup[1] for tup in bangla_vowels if tup[1]}
+    self.juktakhhor:set[str]= {'অ্যা','জ্ঞ','ত্র','ক্ষ','শ্র'}
 
-def is_bangla_vowel(ch: str) -> bool:
-    return ch in bangla_vowels_flattened
+    self.bangla_vowels_flattened: set[str] = {char for tup in self.bangla_vowels for char in tup}
 
-def is_bangla_consonant(ch: str) -> bool:
-    return ch in bangla_consonants
+  def is_bangla_vowel(self, ch:str) -> bool:
+    return ch in self.bangla_vowels_flattened
 
-def is_bangla_special(ch: str) -> bool:
-    return ch in bangla_special_chars
+  def is_bangla_consonant(self, ch:str) -> bool:
+    return ch in self.bangla_consonants
 
-def add_hosonto(seq: str) -> str:
-    if not seq or not is_bangla_consonant(seq[-1]):
+  def add_hosonto(self, seq: str) -> str:
+    if not seq:
         return seq
-    return seq + "\u09CD"  # Virama
 
-def split_word_into_syllabi(word: str) -> list[str]:
+    last_char = seq[-1]
+
+    # Check if the last character is a bangla consonant.
+    # if "\u0995" <= last_char <= "\u09DF":
+    if self.is_bangla_consonant(last_char):
+        # Replace the last character with the character followed by the `virama` (hosonto) ্
+        return seq[:-1] + last_char + "\u09CD"
+
+    # If it is not a Bangla consonant, return the original sequence unchanged.
+    return seq
+
+  def make_juktakhhor(self, ch1:str, ch2:str)->str:
+    """kar-&-fola"""
+
+  def replace_vowel_symbols_with_letters(self, seq: str) -> str:
+    """("অ", ""), ("আ", "া") conversion
+    check a word, if starts with 'kar'/'fola' then replace
     """
-    Splits a Bangla word into syllables considering consonants, vowels, conjuncts, and special characters.
-    - Independent vowels form standalone syllables.
-    - Consonants with vowel diacritics or inherent vowels form syllables.
-    - Conjuncts (C + Virama + C) are treated as single units.
-    - Special characters (e.g., Anusvara) are attached to the previous syllable.
-    - Hosonto is added to non-final syllables ending in consonants.
+    # a mapping dictionary from symbol to letter
+    symbol_to_letter = {symbol: letter for letter, symbol in self.bangla_vowels if symbol}
+
+    if not seq:
+        return seq
+
+    # process char by char
+    result = ""
+    for char in seq:
+        # if character is a symbol, replace it with corresponding letter
+        if char in symbol_to_letter:
+            result += symbol_to_letter[char]
+        else:
+            # keep non-symbol characters as they are
+            result += char
+
+    return result
+
+  def is_swaranto(self, seq: str) -> bool: # মুক্তদল
+    return (seq and self.is_bangla_vowel(seq[-1])) or False
+
+  def is_banjonanto(self, seq: str) -> bool:  # রুদ্ধদল
+    if not seq:
+        return False
+    if seq[-1] == "\u09CD":  # hosonto (্ )
+        return True
+    return self.is_bangla_consonant(seq[-1])
+
+  def get_matra(self, generated_syllables, chhondo) -> int:
+    """calculate matra of a word"""
+    sum = 0
+    for index, syllable in enumerate(generated_syllables):
+        if self.is_swaranto(syllable): # always মাত্রা 1 for মুক্তদল
+            sum += 1
+        elif self.is_banjonanto(syllable):
+            if chhondo == "স্বরবৃত্ত":
+                sum += 1 # both মুক্তদল এবং রুদ্ধদল: মাত্রা 1
+            elif chhondo == "মাত্রাবৃত্ত":
+                sum += 2
+            elif chhondo == "অক্ষরবৃত্ত":
+                if len(generated_syllables) == 1 or index == len(generated_syllables)-1: # একক ভাবে থাকলে অথবা শব্দান্তে থাকলে মাত্রা ২
+                    sum += 2
+                else: # নাহলে মাত্রা ১
+                    sum += 1
+    return sum
+
+  def split_word_into_syllables(self, word: str) -> tuple[str, list[str]]:
+    """
+        * C-1: if ch[0] in bangla-vowels, then then split it and add in the syllables tuple
+        * C-2: find the CCV CVC CV VC patterns using the arrays, properly check
+        * no-need for now: C-3: conjunct split :- if C-1 & C-2 if not followed then only split the word
     """
     word = word.strip()
+    initial_word = word
+    generated_syllables: list[str] = []
+
     if not word:
+        return initial_word, generated_syllables
+
+    # Case 1:
+    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+        # if the word starts with a vowel, split it off : not all,
+        # if it starts with a consonanat then split & add hosonto
+
+    # 1.1 | eg আকাশ: ['আ', 'কাশ্']
+    if len(word)!=1 and self.is_bangla_vowel(word[0]):
+        generated_syllables.append(word[0])
+        word = word[1:]
+
+    # 1.1x | eg ী: ['ঈ']
+    elif len(word)==1 and self.is_bangla_vowel(word[0]):
+        generated_syllables.append(self.replace_vowel_symbols_with_letters(word[0]))
+        word = word[1:]
+
+
+    # Case 2: Split based on cvc, ccv, cv, vc patterns
+    # ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+    is_matched:bool = False
+
+    c = f'[{"".join(self.bangla_consonants)}]'
+    v = f'[{"".join(self.bangla_vowels_flattened)}]'
+    pattern = f'{c}{v}{c}|{c}{{2}}{v}|{c}{v}|{v}{c}'  # cvc | ccv | cv | vc
+
+    matches = re.finditer(pattern, word)
+    last_end = 0
+
+    for match in matches:
+        start, end = match.span()
+        if start > last_end:
+            # any unmatched portion __before__ the match
+            generated_syllables.append(self.add_hosonto(self.replace_vowel_symbols_with_letters(word[last_end:start])))
+        generated_syllables.append(self.add_hosonto(match.group())) # matched syllables pattern
+        last_end = end
+        is_matched = True
+
+    # ~~~~~~~~ case for cc
+    if not is_matched and len(word)==2:
+        generated_syllables.append(self.add_hosonto(word))
+        last_end = 2
+
+    # c* [ccc...], !cc || case ~~~ 1.2 case also handled here
+    elif not is_matched and len(word)>0 and len(word)!=2:
+        generated_syllables.append(self.add_hosonto(word[0]))
+        word = word[1:]
+        # or
+        # last_end = 1
+
+    # any remaining part of the word, __after__ match
+    if last_end < len(word):
+        generated_syllables.append(self.add_hosonto(self.replace_vowel_symbols_with_letters(word[last_end:])))
+
+    return initial_word, generated_syllables
+
+  def split_sentence_into_syllables(self, sentence: str) -> list[tuple[str, list[str]]]:
+    sentence = sentence.strip()
+    if not sentence:
         return []
 
-    syllabi = []
-    i = 0
-    inherent_vowel = "অ"  # Representing the inherent 'ô' sound
+    sentence = re.sub(r'[,.।;:]', '', sentence) # remove puntuations and spaces
+    words:list = [word for word in sentence.split() if word]
+    generated_syllables:list = [self.split_word_into_syllables(word) for word in words]
 
-    while i < len(word):
-        current_syllable = ""
+    return generated_syllables
 
-        # Case 1: Independent vowel starts a syllable
-        if is_bangla_vowel(word[i]) and word[i] in bangla_independent_vowels:
-            current_syllable = word[i]
-            i += 1
+  def __repr__(self):
+    return "<SplitBanglaSyllables> Split Bangla words & sentences into syllables"
 
-        # Case 2: Consonant (possibly part of a conjunct) starts a syllable
-        elif is_bangla_consonant(word[i]):
-            current_syllable = word[i]
-            i += 1
 
-            # Check for conjuncts (C + Virama + C)
-            while i < len(word) - 1 and word[i] == "\u09CD" and is_bangla_consonant(word[i + 1]):
-                current_syllable += "\u09CD" + word[i + 1]
-                i += 2
 
-            # Check for vowel diacritic following the consonant or conjunct
-            if i < len(word) and word[i] in bangla_vowel_diacritics:
-                current_syllable += word[i]
-                i += 1
-            # If no diacritic and not at word end, assume inherent vowel (except for final consonant)
-            elif i < len(word):
-                current_syllable += inherent_vowel
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+# Test
+# ++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+if __name__ == "__main__":
+  bangla_words:list[str] = []
+  poem:str = """
+  খাঁচার পাখিটি ছিলো সোনার খাচাটিতে বনের পাখিটি ছিলো বনে,
+  সহসা কি করিয়া মিলন হলো দোহে, কি ছিলো বিধাতার মনে।
+  """
 
-        # Case 3: Special character (attach to previous syllable if exists)
-        elif is_bangla_special(word[i]):
-            if syllabi:
-                syllabi[-1] += word[i]
-            else:
-                current_syllable = word[i]
-            i += 1
+  splitter:SplitBanglaSyllables = SplitBanglaSyllables()
 
-        # Append non-empty syllable
-        if current_syllable:
-            syllabi.append(current_syllable)
+  # for ch in "দিন":
+  #     print(f'{ch = } {splitter.is_bangla_vowel(ch)=} {splitter.is_bangla_consonant(ch)=}')
+  # TEST PASSED, op: c-v-c
 
-    # Post-processing: Add hosonto to non-final syllables ending with consonants
-    for j in range(len(syllabi) - 1):
-        if is_bangla_consonant(syllabi[j][-1]):
-            syllabi[j] = add_hosonto(syllabi[j])
+  # file = "word_to_syllables/output.txt"
 
-    return syllabi
+  # with open(file, "a") as f:
+  #     for word in bangla_words:
+  #         word, syllables = splitter.split_word_into_syllables(word)
+  #         f.write(f"{word}: {syllables}\n")
 
-# Test the function
-bangla_words = ["না", "মা", "তুমি", "চলো", "বাংলা", "কলম", "বন্ধু", "আকাশ", "মানুষ",
-                "পরিবার", "বিদ্যালয়", "বিশ্ববিদ্যালয়", "রবীন্দ্রনাথ", "দোলনা", "বিধাতার"]
+  #     f.write("\n\nPOEM\n\n")
+  #     syllables = splitter.split_sentence_into_syllables(poem)
+  #     for item in syllables:
+  #         f.write(f"{item[0]}: {item[1]}\n")
 
-for word in bangla_words:
-    print(f"{word}: {split_word_into_syllabi(word)}")
 
 '''
-না: ['না']
-মা: ['মা']
-তুমি: ['তু', 'মি']
-চলো: ['চঅ', 'লো']
-বাংলা: ['বাং', 'লা']
-কলম: ['কঅ', 'লঅ', 'ম']
-বন্ধু: ['বঅ', 'ন্ধু']
-আকাশ: ['আ', 'কা', 'শ']
-মানুষ: ['মা', 'নু', 'ষ']
-পরিবার: ['পঅ', 'রি', 'বা', 'র']
+bangla_words:list[str] = [
+  # very basic
+  "ঈ", "ী", "ক", "খ", "গ",
+
+  # case 1
+  "তুমি", "আকাশ", "কলম",
+
+  # complex case 1
+  "চলো", "বাংলা", "মানুষ",
+
+  # case 2
+  "মা",
+  "দোলনা",
+  "পরিবার",
+  "বন্ধু",
+
+  "বিদ্যালয়",
+  "বিশ্ববিদ্যালয়",
+  "রবীন্দ্রনাথ",
+  "বিধাতার",
+  "আনারস",
+
+  "চাট", "গড়", "হাট", "কাট", "লব", "ডাক", "টান", "নাম", "বল", "ধন",
+  "কলম", "সরম", "ঘরছ", "বসত", "নগর", "পলন", "মরক", "ভরত", "দরদ", "জলধ"
+]
+
+poem:str = """
+  হাজার বছর ধরে আমি পথ হাঁটিতেছি পৃথিবীর পথে,
+  সিংহল সমুদ্র থেকে নিশীথের অন্ধকারে মালয় সাগরে
+  অনেক ঘুরেছি আমি; বিম্বিসার অশোকের ধূসর জগতে
+  সেখানে ছিলাম আমি; আরো দূর অন্ধকারে বিদর্ভ নগরে;
+  আমি ক্লান্ত প্রাণ এক, চারিদিকে জীবনের সমুদ্র সফেন,
+  আমারে দুদণ্ড শান্তি দিয়েছিলো নাটোরের বনলতা সেন।
+
+  চুল তার কবেকার অন্ধকার বিদিশার নিশা,
+  মুখ তার শ্রাবস্তীর কারুকার্য; অতিদূর সমুদ্রের 'পর
+  হাল ভেঙে যে নাবিক হারায়েছে দিশা
+  সবুজ ঘাসের দেশ যখন সে চোখে দেখে দারুচিনি-দ্বীপের ভিতর,
+  তেমনি দেখেছি তারে অন্ধকারে; বলেছে সে, 'এতোদিন কোথায় ছিলেন?'
+  পাখির নীড়ের মত চোখ তুলে নাটোরের বনলতা সেন।
+
+  সমস্ত দিনের শেষে শিশিরের শব্দের মতন
+  সন্ধ্যা আসে; ডানার রৌদ্রের গন্ধ মুছে ফেলে চিল;
+  পৃথিবীর সব রঙ নিভে গেলে পাণ্ডুলিপি করে আয়োজন
+  তখন গল্পের তরে জোনাকির রঙে ঝিলমিল;
+  সব পাখি ঘরে আসে—সব নদী—ফুরায় এ-জীবনের সব লেনদেন;
+  থাকে শুধু অন্ধকার, মুখোমুখি বসিবার বনলতা সেন।"""
 '''

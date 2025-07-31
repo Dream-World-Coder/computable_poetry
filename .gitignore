@@ -4,3 +4,6 @@
 tests/
 __py*
 database/db/words.txt
+
+venv/
+node_modules/
