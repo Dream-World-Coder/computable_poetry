@@ -4,6 +4,11 @@ to do:
   -> tags updation should be done and most importantly i need to manually tag first 500 frequent words
   -> bivakti handle is a must too
 
+non core:
+  -> update readme
+  -> update website & data
+  -> add animations in website
+
 
 
 
