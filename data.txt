@@ -1,3 +1,19 @@
+to do:
+  -> update cfg
+  -> update matra pick like rn 4 is picked only for 4 4 4 2, need to pick 2+2 too
+  -> tags updation should be done and most importantly i need to manually tag first 500 frequent words
+  -> bivakti handle is a must too
+
+
+
+
+
+
+
+
+
+
+
 | Tag       | Description                              | Example(s)                                |
 | --------- | ---------------------------------------- | ----------------------------------------- |
 | **NN**    | Noun, singular or mass                   | “dog”, “happiness”                        |
