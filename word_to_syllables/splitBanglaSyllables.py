@@ -1,3 +1,5 @@
+# newest
+
 import re
 from transformers import AutoTokenizer, AutoModelForTokenClassification, pipeline
 from transformers.pipelines import AggregationStrategy, PipelineException
@@ -29,7 +31,8 @@ class SplitBanglaSyllables:
       "য", "র", "ল",
       "শ", "ষ", "স", "হ",
       "ড়", "ঢ়", "য়", "ৎ",
-      " ং", ":", " ঁ"
+      " ং", ":", " ঁ",
+      "ং", "ঁ" # looks like space roye geche ager tai
     }
 
     self.bangla_vowels_flattened: set[str] = {char for tup in self.bangla_vowels for char in tup}
@@ -94,6 +97,9 @@ class SplitBanglaSyllables:
     if not seq:
       return False
     if seq[-1] == "\u09CD":  # hosonto (্)
+      return True
+    # last 1 or 2 chars for compound consonants
+    if seq[-2:] in {"ড়", "ঢ়", "য়"}:
       return True
     return self.is_bangla_consonant(seq[-1])
 

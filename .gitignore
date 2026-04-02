@@ -7,3 +7,6 @@ database/db/words.txt
 
 venv/
 node_modules/
+resources
+poems/extracted
+db

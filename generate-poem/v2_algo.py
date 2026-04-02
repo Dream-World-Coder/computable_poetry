@@ -7,6 +7,8 @@ from typing import List, Dict, Tuple, Any
 class PoemGenerator:
   def __init__(self, pattern: str = '4|4|4|2'):
     self.pattern = pattern
+
+    # self.database_path = 'database/db/words.json'
     self.database_path = 'new-approach/database/words.json'
 
     self.words_cache: Dict[int, List[Dict[str, Any]]] = {}  # cache valid words by matra
