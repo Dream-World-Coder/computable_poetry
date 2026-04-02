@@ -1,0 +1,748 @@
+১. আমি (Ami) - I
+২. আমরা (Amra) - We
+৩. তুমি (Tumi) - You (informal)
+৪. তোমরা (Tomra) - You (plural, informal)
+৫. আপনি (Apni) - You (formal)
+৬. আপনারা (Apnara) - You (plural, formal)
+৭. সে (She) - He/She (informal)
+৮. তারা (Tara) - They (informal)
+৯. তিনি (Tini) - He/She (formal)
+১০. তাঁরা (Tãra) - They (formal)
+১১. ও (O) - That/He/She (near, informal)
+১২. এ (E) - This/He/She (very near, informal)
+১৩. কে (Ke) - Who
+১৪. কারা (Kara) - Who (plural)
+১৫. কি (Ki) - What
+১৬. কোনটা (Konta) - Which one
+১৭. কখন (Kokhono) - When
+১৮. কবে (Kobe) - When (on which day)
+১৯. কোথায় (Kothay) - Where
+২০. কেন (Keno) - Why
+২১. কিভাবে (Kibhabe) - How
+২২. কেমন (Kemon) - How (of what kind)
+২৩. কত (Koto) - How much/many
+২৪. যার (Jar) - Whose
+২৫. তাকে (Take) - Him/Her
+২৬. আমার (Amar) - My/Mine
+২৭. তোমার (Tomar) - Your/Yours (informal)
+২৮. আপনার (Apnar) - Your/Yours (formal)
+২৯. তার (Tar) - His/Her (informal)
+৩০. তাঁর (Tãr) - His/Her (formal)
+৩১. আমাদের (Amader) - Our/Ours
+৩২. তোমাদের (Tomader) - Your/Yours (plural, informal)
+৩৩. আপনাদের (Apnader) - Your/Yours (plural, formal)
+৩৪. তাদের (Tader) - Their/Theirs (informal)
+৩৫. তাঁদের (Tãder) - Their/Theirs (formal)
+৩৬. সব (Shob) - All
+৩৭. কিছু (Kichu) - Some
+৩৮. অনেক (Onek) - Many/Much
+৩৯. অল্প (Olpo) - Few/Little
+৪০. প্রতি (Proti) - Every
+৪১. এই (Ei) - This
+৪২. ঐ (Oi) - That
+৪৩. ওই (Oi) - That
+৪৪. একজন (Ekjon) - One person
+৪৫. কোনো (Kono) - Any
+৪৬. অন্য (Onno) - Other
+৪৭. নিজ (Nij) - Self
+৪৮. নিজে (Nije) - Myself/Yourself
+৪৯. যা (Ja) - That which
+৫০. তা (Ta) - That
+৫১. এবং (Ebong) - And
+৫২. ও (O) - And
+৫৩. আর (Ar) - And/More
+৫৪. কিন্তু (Kintu) - But
+৫৫. অথবা (Othoba) - Or
+৫৬. বা (Ba) - Or
+৫৭. কারণ (Karon) - Because
+৫৮. তাই (Tai) - So/Therefore
+৫৯. সুতরাং (Sutorang) - So/Hence
+৬০. যদি (Jodi) - If
+৬১. তবে (Tobe) - Then
+৬২. যদিও (Jodio) - Although
+৬৩. তবুও (Tobuo) - Still/Nevertheless
+৬৪. উপরে (Upore) - Above/On
+৬৫. নিচে (Niche) - Below/Under
+৬৬. ভিতরে (Bhitore) - Inside
+৬৭. বাইরে (Baire) - Outside
+৬৮. সামনে (Shamne) - In front
+৬৯. পিছনে (Pichone) - Behind
+৭০. পাশে (Pashe) - Beside
+৭১. সাথে (Shathe) - With
+৭২. জন্য (Jonno) - For
+৭৩. থেকে (Theke) - From
+৭৪. দিকে (Dike) - Towards
+৭৫. পর্যন্ত (Porjonto) - Until/Up to
+৭৬. ছাড়া (Chara) - Without
+৭৭. দ্বারা (Dara) - By
+৭৮. মধ্যে (Moddhe) - In/Among
+৭৯. কাছে (Kache) - Near
+৮০. দূরে (Dure) - Far
+৮১. আগে (Age) - Before
+৮২. পরে (Pore) - After
+৮৩. এখন (Ekhon) - Now
+৮৪. তখন (Tokhon) - Then
+৮৫. আজ (Aaj) - Today
+৮৬. কাল (Kal) - Tomorrow/Yesterday
+৮৭. পরশু (Porshu) - The day after tomorrow/before yesterday
+৮৮. দিন (Din) - Day
+৮৯. রাত (Raat) - Night
+৯০. সকাল (Shokal) - Morning
+৯১. দুপুর (Dupur) - Noon
+৯২. বিকাল (Bikal) - Afternoon
+৯৩. সন্ধ্যা (Shondha) - Evening
+৯৪. সপ্তাহ (Shoptaaho) - Week
+৯৫. মাস (Mash) - Month
+৯৬. বছর (Bochor) - Year
+৯৭. সময় (Shomoy) - Time
+৯৮. ঘন্টা (Ghonta) - Hour
+৯৯. মিনিট (Minit) - Minute
+১০০. সেকেন্ড (Sekend) - Second
+১০১. করা (Kora) - To do
+১০২. হওয়া (Howa) - To be/To become
+১০৩. থাকা (Thaka) - To stay/To be present
+১০৪. যাওয়া (Jaowa) - To go
+১০৫. আসা (Asha) - To come
+১০৬. খাওয়া (Khaowa) - To eat
+১০৭. দেওয়া (Dewa) - To give
+১০৮. নেওয়া (Newa) - To take
+১০৯. বলা (Bola) - To say/tell
+১১০. শোনা (Shona) - To hear/listen
+১১১. দেখা (Dekha) - To see
+১১২. লেখা (Lekha) - To write
+১১৩. পড়া (Pora) - To read/study
+১১৪. জানা (Jana) - To know
+১১৫. চেনা (Chena) - To recognize
+১১৬. বোঝা (Bojha) - To understand
+১১৭. ভাবা (Bhaba) - To think
+১১৮. ভালোবাসা (Bhalobasha) - To love
+১১৯. কাজ (Kaj) - Work
+১২০. ঘুমানো (Ghumano) - To sleep
+১২১. ওঠা (Otha) - To rise/get up
+১২২. বসা (Bosha) - To sit
+১২৩. দাঁড়ানো (Dãrano) - To stand
+১২৪. হাঁটা (Hãta) - To walk
+১২৫. দৌড়ানো (Dourano) - To run
+১২৬. খোলা (Khola) - To open
+১২৭. বন্ধ করা (Bondho kora) - To close
+১২৮. কেনা (Kena) - To buy
+১২৯. বেচা (Becha) - To sell
+১৩০. রাখা (Rakha) - To keep/put
+১৩১. চাওয়া (Chaowa) - To want
+১৩২. পাওয়া (Paowa) - To get/find
+১৩৩. পারা (Para) - To be able to/can
+১৩৪. শেখা (Shekha) - To learn
+১৩৫. শেখানো (Shekhano) - To teach
+১৩৬. চালানো (Chalano) - To drive/operate
+১৩৭. হাসা (Hasha) - To laugh
+১৩৮. কাঁদা (Kãda) - To cry
+১৩৯. খেলা (Khela) - To play
+১৪০. গান করা (Gaan kora) - To sing
+১৪১. নাচা (Nacha) - To dance
+১৪২. আঁকা (Ãka) - To draw
+১৪৩. কথা (Kotha) - Word/Talk
+১৪৪. উত্তর (Uttor) - Answer/North
+১৪৫. প্রশ্ন (Proshno) - Question
+১৪৬. শুরু (Shuru) - Start
+১৪৭. শেষ (Shesh) - End
+১৪৮. জীবন (Jibon) - Life
+১৪৯. মৃত্যু (Mrittu) - Death
+১৫০. জন্ম (Jonmo) - Birth
+১৫১. মানুষ (Manush) - Human/Person
+১৫২. পুরুষ (Purush) - Male/Man
+১৫৩. নারী (Nari) - Female/Woman
+১৫৪. ছেলে (Chhele) - Boy/Son
+১৫৫. মেয়ে (Meye) - Girl/Daughter
+১৫৬. শিশু (Shishu) - Child/Baby
+১৫৭. বন্ধু (Bondhu) - Friend
+১৫৮. শত্রু (Shotru) - Enemy
+১৫৯. পরিবার (Poribar) - Family
+১৬০. মা (Ma) - Mother
+১৬১. বাবা (Baba) - Father
+১৬২. ভাই (Bhai) - Brother
+১৬৩. বোন (Bon) - Sister
+১৬৪. স্বামী (Shami) - Husband
+১৬৫. স্ত্রী (Stri) - Wife
+১৬৬. দাদু (Dadu) - Grandfather (paternal)
+১৬৭. দিদা (Dida) - Grandmother (maternal)
+১৬৮. ঠাকুরমা (Thakurma) - Grandmother (paternal)
+১৬৯. ঠাকুরদা (Thakurda) - Grandfather (paternal)
+১৭০. কাকা (Kaka) - Uncle (father's younger brother)
+১৭১. মামা (Mama) - Uncle (mother's brother)
+১৭২. শিক্ষক (Shikkhok) - Teacher
+১৭৩. ছাত্র (Chhatro) - Student (male)
+১৭৪. ছাত্রী (Chhatri) - Student (female)
+১৭৫. ডাক্তার (Daktar) - Doctor
+১৭৬. পুলিশ (Police) - Police
+১৭৭. লেখক (Lekhok) - Writer
+১৭৮. কবি (Kobi) - Poet
+১৭৯. শিল্পী (Shilpi) - Artist
+১৮০. গায়ক (Gayok) - Singer
+১৮১. কৃষক (Krishok) - Farmer
+১৮২. শ্রমিক (Shromik) - Labourer
+১৮৩. দোকানদার (Dokandar) - Shopkeeper
+১৮৪. সরকার (Sorkar) - Government
+১৮৫. দেশ (Desh) - Country
+১৮৬. রাজ্য (Rajjo) - State
+১৮৭. শহর (Shohor) - City
+১৮৮. গ্রাম (Gram) - Village
+১৮৯. বাড়ি (Bari) - House
+১৯০. ঘর (Ghor) - Room
+১৯১. দরজা (Dorja) - Door
+১৯২. জানালা (Janala) - Window
+১৯৩. ছাদ (Chhad) - Roof/Ceiling
+১৯৪. দেয়াল (Deyal) - Wall
+১৯৫. মেঝে (Mejhe) - Floor
+১৯৬. রাস্তা (Rasta) - Road/Street
+১৯৭. স্কুল (School) - School
+১৯৮. কলেজ (College) - College
+১৯৯. বিশ্ববিদ্যালয় (Bishwobiddaloy) - University
+২০০. হাসপাতাল (Hashpatal) - Hospital
+২০১. বাজার (Bajar) - Market
+২০২. দোকান (Dokan) - Shop
+২০৩. অফিস (Office) - Office
+২০৪. মন্দির (Mondir) - Temple
+২০৫. মসজিদ (Mosjid) - Mosque
+২০৬. গির্জা (Girja) - Church
+২০৮. খাতা (Khata) - Notebook
+২০৯. কলম (Kolom) - Pen
+২১০. টেবিল (Table) - Table
+২১১. চেয়ার (Chair) - Chair
+২১২. বিছানা (Bichana) - Bed
+২১৩. আলো (Alo) - Light
+২১৪. অন্ধকার (Ondhokar) - Darkness
+২১৫. বাতাস (Batash) - Air/Wind
+২১৬. জল (Jol) - Water
+২১৭. পানি (Pani) - Water
+২১৮. আগুন (Agun) - Fire
+২১৯. মাটি (Mati) - Soil/Earth
+২২০. আকাশ (Akash) - Sky
+২২১. মেঘ (Megh) - Cloud
+২২২. বৃষ্টি (Brishti) - Rain
+২২৩. নদী (Nodi) - River
+২২৪. সাগর (Shagor) - Sea
+২২৫. মহাসাগর (Mohashagor) - Ocean
+২২৬. পাহাড় (Pahar) - Mountain/Hill
+২২৭. গাছ (Gach) - Tree
+২২৮. পাতা (Pata) - Leaf
+২২৯. ফুল (Phul) - Flower
+২৩০. ফল (Phol) - Fruit
+২৩১. বন (Bon) - Forest
+২৩২. জঙ্গল (Jongol) - Jungle
+২৩৩. পশু (Poshu) - Animal
+২৩৪. পাখি (Pakhi) - Bird
+২৩৫. মাছ (Machh) - Fish
+২৩৬. বাঘ (Bagh) - Tiger
+২৩৭. সিংহ (Shingho) - Lion
+২৩৮. হাতি (Hati) - Elephant
+২৩৯. ঘোড়া (Ghora) - Horse
+২৪০. গরু (Goru) - Cow
+২৪১. ছাগল (Chagol) - Goat
+২৪২. কুকুর (Kukur) - Dog
+২৪৩. বিড়াল (Biral) - Cat
+২৪৪. সাপ (Shap) - Snake
+২৪৫. পোকা (Poka) - Insect
+২৪৬. খাদ্য (Khadya) - Food
+২৪৭. ভাত (Bhat) - Cooked rice
+২৪৮. ডাল (Dal) - Lentil soup
+২৪৯. রুটি (Ruti) - Bread/Roti
+২৫০. মাংস (Mangsho) - Meat
+২৫১. ডিম (Dim) - Egg
+২৫২. দুধ (Dudh) - Milk
+২৫৩. চিনি (Chini) - Sugar
+২৫৪. লবণ (Lobon) - Salt
+২৫৫. তেল (Tel) - Oil
+২৫৬. মশলা (Moshla) - Spice
+২৫৭. সবজি (Shobji) - Vegetable
+২৫৮. আম (Aam) - Mango
+২৫৯. কলা (Kola) - Banana
+২৬০. আপেল (Apel) - Apple
+২৬১. কমলা (Komola) - Orange
+২৬২. লেবু (Lebu) - Lemon
+২৬৩. শরীর (Shorir) - Body
+২৬৪. মাথা (Matha) - Head
+২৬৫. চুল (Chul) - Hair
+২৬৬. মুখ (Mukh) - Face/Mouth
+২৬৭. চোখ (Chokh) - Eye
+২৬৮. নাক (Nak) - Nose
+২৬৯. কান (Kan) - Ear
+২৭০. গলা (Gola) - Throat/Neck
+২৭১. হাত (Haat) - Hand
+২৭২. পা (Pa) - Leg/Foot
+২৭৩. আঙুল (Angul) - Finger
+২৭৪. পেট (Pet) - Stomach
+২৭৫. বুক (Buk) - Chest
+২৭৬. পিঠ (Pith) - Back
+২৭৭. মন (Mon) - Mind
+২৭৮. হৃদয় (Hridoy) - Heart
+২৭৯. জ্ঞান (Gyan) - Knowledge
+২৮০. বুদ্ধি (Buddhi) - Intelligence
+২৮১. শিক্ষা (Shikkha) - Education
+২৮২. ভাষা (Bhasha) - Language
+২৮৩. বিজ্ঞান (Biggan) - Science
+২৮৪. ইতিহাস (Itihash) - History
+২৮৫. ভূগোল (Bhugol) - Geography
+২৮৬. গণিত (Gonit) - Mathematics
+২৮৭. শিল্প (Shilpo) - Art/Industry
+২৮৮. সাহিত্য (Shahityo) - Literature
+২৮৯. সঙ্গীত (Shongit) - Music
+২৯০. ধর্ম (Dhormo) - Religion
+২৯১. সংস্কৃতি (Shongskriti) - Culture
+২৯২. আইন (Ain) - Law
+২৯৩. নিয়ম (Niyom) - Rule
+২৯৪. সমাজ (Shomaj) - Society
+২৯৫. রাজনীতি (Rajniti) - Politics
+২৯৬. অর্থ (Ortho) - Money/Meaning
+২৯৭. টাকা (Taka) - Money/Taka
+২৯৮. ব্যবসা (Byabsha) - Business
+২৯৯. স্বাস্থ্য (Shastho) - Health
+৩০০. রোগ (Rog) - Disease
+৩০১. ঔষধ (Oushodh) - Medicine
+৩০২. ভালো (Bhalo) - Good
+৩০৩. খারাপ (Kharap) - Bad
+৩০৪. সুন্দর (Shundor) - Beautiful
+৩০৫. কুৎসিত (Kutsit) - Ugly
+৩০৬. বড় (Boro) - Big/Large
+৩০৭. ছোট (Chhoto) - Small
+৩০৮. লম্বা (Lomba) - Tall/Long
+৩০৯. খাটো (Khato) - Short
+৩১০. মোটা (Mota) - Fat/Thick
+৩১১. রোগা (Roga) - Thin/Lean
+৩১২. নতুন (Notun) - New
+৩১৩. পুরোনো (Purono) - Old
+৩১৪. গরম (Gorom) - Hot
+৩১৫. ঠান্ডা (Thanda) - Cold
+৩১৬. নরম (Norom) - Soft
+৩১৭. শক্ত (Shokto) - Hard
+৩১৮. সহজ (Shohoj) - Easy
+৩১৯. কঠিন (Kothin) - Difficult
+৩২০. পরিষ্কার (Porishkar) - Clean
+৩২১. নোংরা (Nongra) - Dirty
+৩২২. সাদা (Shada) - White
+৩২৩. কালো (Kalo) - Black
+৩২৪. লাল (Lal) - Red
+৩২৫. নীল (Neel) - Blue
+৩২৬. সবুজ (Shobuj) - Green
+৩২৭. হলুদ (Holud) - Yellow
+৩২৮. গোলাপি (Golapi) - Pink
+৩২৯. বেগুনি (Beguni) - Purple
+৩৩০. কমলা (Komola) - Orange (color)
+৩৩১. মিষ্টি (Mishti) - Sweet
+৩৩২. টক (Tok) - Sour
+৩৩৩. ঝাল (Jhal) - Spicy/Hot
+৩৩৪. তেতো (Teto) - Bitter
+৩৩৫. নোনতা (Nonta) - Salty
+৩৩৬. কাঁচা (Kãcha) - Raw/Unripe
+৩৩৭. পাকা (Paka) - Ripe/Cooked
+৩৩৮. ভেজা (Bheja) - Wet
+৩৩৯. শুকনো (Shukno) - Dry
+৩৪০. খালি (Khali) - Empty
+৩৪১. ভরা (Bhora) - Full
+৩৪২. সুখী (Shukhi) - Happy
+৩৪৩. দুঃখী (Duhkhi) - Sad
+৩৪৪. রাগী (Ragi) - Angry
+৩৪৫. শান্ত (Shanto) - Calm/Quiet
+৩৪৬. দ্রুত (Druto) - Fast
+৩৪৭. আস্তে (Aste) - Slow
+৩৪৮. শক্তিশালী (Shoktishali) - Strong
+৩৪৯. দুর্বল (Durbol) - Weak
+৩৫০. জীবিত (Jibito) - Alive
+৩৫১. মৃত (Mrito) - Dead
+৩৫২. দামী (Dami) - Expensive
+৩৫৩. সস্তা (Shosta) - Cheap
+৩৫৪. আসল (Ashol) - Real/Original
+৩৫৫. নকল (Nokol) - Fake/Duplicate
+৩৫৬. ঠিক (Thik) - Correct/Right
+৩৫৭. ভুল (Bhul) - Wrong/Mistake
+৩৫৮. এক (Ek) - One
+৩৫৯. দুই (Dui) - Two
+৩৬০. তিন (Tin) - Three
+৩৬১. চার (Char) - Four
+৩৬২. পাঁচ (Pãch) - Five
+৩৬৩. ছয় (Chhoy) - Six
+৩৬৪. সাত (Shat) - Seven
+৩৬৫. আট (Aat) - Eight
+৩৬৬. নয় (Noy) - Nine
+৩৬৭. দশ (Dosh) - Ten
+৩৬৮. বিশ (Bish) - Twenty
+৩৬৯. পঞ্চাশ (Ponchash) - Fifty
+৩৭০. একশ (Eksho) - One hundred
+৩৭১. হাজার (Hajar) - Thousand
+৩৭২. লক্ষ (Lokkho) - Lakh (100,000)
+৩৭৩. কোটি (Koti) - Crore (10,000,000)
+৩৭৪. প্রথম (Prothom) - First
+৩৭৫. দ্বিতীয় (Dwitiyo) - Second
+৩৭৬. তৃতীয় (Tritiyo) - Third
+৩৭৭. শেষ (Shesh) - Last
+৩৭৮. অর্ধেক (Ordhek) - Half
+৩৭৯. পুরো (Puro) - Whole
+৩৮০. সংখ্যা (Shongkhya) - Number
+৩৮১. নাম (Naam) - Name
+৩৮২. ছবি (Chhobi) - Picture/Image
+৩৮৩. গল্প (Golpo) - Story
+৩৮৪. কবিতা (Kobita) - Poem
+৩৮৫. গান (Gaan) - Song
+৩৮৬. খবর (Khobor) - News
+৩৮৭. চিঠি (Chithi) - Letter
+৩৮৮. কাগজ (Kagoj) - Paper
+৩৮৯. রঙ (Rong) - Colour
+৩৯০. গন্ধ (Gondho) - Smell
+৩৯১. স্বাদ (Shad) - Taste
+৩৯২. শব্দ (Shobdo) - Sound/Word
+৩৯৩. ভাষা (Bhasha) - Language
+৩৯৪. অর্থ (Ortho) - Meaning
+৩৯৫. উদাহরণ (Udohoron) - Example
+৩৯৬. পরীক্ষা (Porikkha) - Exam/Test
+৩৯৭. ফল (Phol) - Result/Fruit
+৩৯৮. কারণ (Karon) - Reason
+৩৯৯. ভয় (Bhoy) - Fear
+৪০০. সাহস (Shahosh) - Courage
+৪০১. আশা (Asha) - Hope
+৪০২. ইচ্ছা (Ichchha) - Wish/Desire
+৪০৩. স্বপ্ন (Shopno) - Dream
+৪০৪. চিন্তা (Chinta) - Worry/Thought
+৪০৫. চেষ্টা (Cheshta) - Effort/Attempt
+৪০৬. সফল (Shophol) - Successful
+৪০৭. ব্যর্থ (Byartho) - Failed
+৪০৮. আনন্দ (Anondo) - Joy/Happiness
+৪০৯. দুঃখ (Dukkho) - Sorrow/Sadness
+৪১০. সুখ (Shukh) - Happiness/Comfort
+৪১১. শান্তি (Shanti) - Peace
+৪১২. যুদ্ধ (Juddho) - War
+৪১৩. সাহায্য (Shahajjo) - Help
+৪১৪. উপহার (Upohar) - Gift
+৪১৫. দাম (Daam) - Price
+৪১৬. ওজন (Ojon) - Weight
+৪১৭. মাপ (Maap) - Measurement
+৪১৮. আকার (Akar) - Shape/Size
+৪১৯. দিক (Dik) - Direction
+৪২০. পূর্ব (Purbo) - East
+৪২১. পশ্চিম (Poshchim) - West
+৪২২. উত্তর (Uttor) - North
+৪২৩. দক্ষিণ (Dokkhin) - South
+৪২৪. কোণ (Kon) - Corner/Angle
+৪২৫. সোজা (Shoja) - Straight
+৪২৬. বাঁকা (Bãka) - Bent/Curved
+৪২৭. গোল (Gol) - Round
+৪২৮. চাকা (Chaka) - Wheel
+৪২৯. গাড়ি (Gari) - Car/Vehicle
+৪৩০. ট্রেন (Train) - Train
+৪৩১. বিমান (Biman) - Aeroplane
+৪৩২. জাহাজ (Jahaj) - Ship
+৪৩৩. নৌকা (Nouka) - Boat
+৪৩৪. সাইকেল (Cycle) - Bicycle
+৪৩৫. সূর্য (Shurjo) - Sun
+৪৩৬. চাঁদ (Chãd) - Moon
+৪৩৭. তারা (Tara) - Star
+৪৩৮. গ্রহ (Groho) - Planet
+৪৩৯. পৃথিবী (Prithibi) - Earth
+৪४०. বিশ্ব (Bishwo) - World
+৪৪১. জগৎ (Jogot) - Universe/World
+৪৪২. গ্রীষ্ম (Grishsho) - Summer
+৪৪৩. বর্ষা (Borsha) - Monsoon
+৪৪৪. শরৎ (Shorot) - Autumn
+৪৪৫. হেমন্ত (Hemonto) - Late Autumn
+৪৪৬. শীত (Sheet) - Winter
+৪৪৭. বসন্ত (Boshonto) - Spring
+৪৪৮. ঋতু (Ritu) - Season
+৪৪৯. ভবিষ্যৎ (Bhobisshot) - Future
+৪৫০. বর্তমান (Bortoman) - Present
+৪৫১. অতীত (Otit) - Past
+৪৫২. বয়স (Boyosh) - Age
+৪৫৩. দল (Dol) - Team/Group
+৪৫৫. সভা (Shobha) - Meeting
+৪৫৬. উৎসব (Utshob) - Festival
+৪৫৭. পূজা (Puja) - Worship
+৪৫৮. বিয়ে (Biye) - Marriage
+৪৫৯. জন্মদিন (Jonmodin) - Birthday
+৪৬০. অতিথি (Otithi) - Guest
+৪৬১. রান্না (Ranna) - Cooking
+৪৬২. আগুন (Agun) - Fire
+৪৬৩. ধোঁয়া (Dhõa) - Smoke
+৪৬৪. ছাই (Chhai) - Ash
+৪৬৫. বরফ (Borof) - Ice
+৪৬৬. বাষ্প (Bashpo) - Steam/Vapour
+৪৬৭. বিদ্যুৎ (Bidyut) - Electricity
+৪৬৮. যন্ত্র (Jontro) - Machine
+৪৬৯. কম্পিউটার (Computer) - Computer
+৪৭০. মোবাইল (Mobile) - Mobile
+৪৭১. টিভি (TV) - TV
+৪৭২. রেডিও (Radio) - Radio
+৪৭৩. সিনেমা (Cinema) - Cinema
+৪৭৪. নাটক (Natok) - Drama/Play
+৪৭৫. অভিনয় (Obhinoy) - Acting
+৪৭৬. পরিচয় (Porichoy) - Introduction/Identity
+৪৭৭. ঠিকানা (Thikana) - Address
+৪৭৮. সম্মান (Shomman) - Respect
+৪৭৯. অপমান (Opoman) - Insult
+৪৮০. ভালোবাসা (Bhalobasha) - Love
+৪৮১. ঘৃণা (Ghrina) - Hate
+৪৮২. বিশ্বাস (Bishwash) - Trust/Belief
+৪৮৩. সন্দেহ (Shondeho) - Doubt
+৪৮৪. অপেক্ষা (Opekkha) - Wait
+৪৮৫. বিদায় (Biday) - Farewell
+৪৮৬. ক্ষমা (Khoma) - Forgiveness
+৪৮৭. শাস্তি (Shasti) - Punishment
+৪৮৮. অধিকার (Odhikar) - Right
+৪৮৯. কর্তব্য (Kortobbo) - Duty
+৪৯০. দায়িত্ব (Dayitto) - Responsibility
+৪৯১. প্রধান (Prodhan) - Main/Chief
+৪৯২. সাধারণ (Shadharon) - General/Ordinary
+৪৯৩. বিশেষ (Bishesh) - Special
+৪৯৪. জরুরি (Joruri) - Urgent
+৪৯৫. প্রয়োজন (Proyojon) - Need
+৪৯৬. ব্যবহার (Byabohar) - Use/Behaviour
+৪৯৭. পরিবর্তন (Poriborton) - Change
+৪৯৮. উন্নতি (Unnoti) - Progress
+৪৯৯. অবনতি (Obonoti) - Decline
+৫০০. সৃষ্টি (Srishti) - Creation
+৫০১. ধ্বংস (Dhongsgo) - Destruction
+৫০২. রক্ষা (Rekkha) - Protection
+৫০৩. আক্রমণ (Akromon) - Attack
+৫০৪. শক্তি (Shokti) - Power/Energy
+৫০৫. ক্ষমতা (Khomota) - Ability/Power
+৫০৬. ইচ্ছা (Ichchha) - Will/Wish
+৫০৭. উপায় (Upay) - Way/Method
+৫০৮. সমস্যা (Shomossha) - Problem
+৫০৯. সমাধান (Shomadhan) - Solution
+৫১০. আলোচনা (Alochona) - Discussion
+৫১১. সিদ্ধান্ত (Siddhanto) - Decision
+৫১২. পরামর্শ (Poramorsho) - Advice
+৫১৩. প্রস্তাব (Prostab) - Proposal
+৫১৪. চুক্তি (Chukti) - Agreement/Contract
+৫১৫. সম্পর্ক (Shomporko) - Relation
+৫১৬. পার্থক্য (Parthokko) - Difference
+৫১৭. মিল (Mil) - Similarity/Unity
+৫১৮. প্রকাশ (Prokash) - Publication/Expression
+৫১৯. গোপন (Gopon) - Secret
+৫২০. সত্য (Shotto) - Truth
+৫২১. মিথ্যা (Mithya) - Lie/Falsehood
+৫২২. ন্যায় (Nyay) - Justice
+৫২৩. অন্যায় (Onnyay) - Injustice
+৫২৪. পাপ (Pap) - Sin
+৫২৫. পুণ্য (Punyo) - Virtue
+৫২৬. ভাগ্য (Bhaggo) - Fate/Luck
+৫২৭. দুর্ভাগ্য (Durbhaggio) - Misfortune
+৫২৮. অভিজ্ঞতা (Obhiggota) - Experience
+৫২৯. অভ্যাস (Obbhash) - Habit
+৫৩০. প্রতিযোগিতা (Protijogita) - Competition
+৫৩১. জয় (Joy) - Victory
+৫৩২. পরাজয় (Porajoy) - Defeat
+৫৩৩. পুরস্কার (Purushkar) - Prize/Award
+৫৩৪. তিরস্কার (Tiroshkar) - Scolding
+৫৩৫. প্রশংসা (Proshongsha) - Praise
+৫৩৬. নিন্দা (Ninda) - Criticism
+৫৩৭. অনুরোধ (Onurodh) - Request
+৫৩৮. আদেশ (Adesh) - Order/Command
+৫৩৯. অনুমতি (Onumoti) - Permission
+৫৪০. নিষেধ (Nishedh) - Prohibition
+৫৪১. ঘোষণা (Ghoshona) - Announcement
+৫৪২. বিজ্ঞাপন (Biggyapon) - Advertisement
+৫৪৩. আন্দোলন (Andolon) - Movement
+৫৪৪. বিপ্লব (Biplob) - Revolution
+৫৪৫. ইতিহাস (Itihash) - History
+৫৪৬. সভ্যতা (Shobbhota) - Civilization
+৫৪৭. ঐতিহ্য (Oitijjo) - Tradition
+৫৪৮. আধুনিক (Adhunik) - Modern
+৫৪৯. প্রাচীন (Prachin) - Ancient
+৫৫০. জাতীয় (Jatiyo) - National
+৫৫১. আন্তর্জাতিক (Antorjatik) - International
+৫৫২. স্থানীয় (Sthaniyo) - Local
+৫৫৩. গ্রাম্য (Grammo) - Rural
+৫৫৪. শহুরে (Shohure) - Urban
+৫৫৫. মানব (Manob) - Human
+৫৫৬. দানব (Danob) - Demon
+৫৫৭. দেবতা (Debota) - Deity/God
+৫৫৮. ঈশ্বর (Ishwar) - God
+৫৫৯. আল্লাহ (Allah) - Allah
+৫৬০. প্রার্থনা (Prarthona) - Prayer
+৫৬১. আশীর্বাদ (Ashirbad) - Blessing
+৫৬২. অভিশাপ (Obhishap) - Curse
+৫৬৩. স্বর্গ (Shorgo) - Heaven
+৫৬৪. নরক (Norok) - Hell
+৫৬৫. আত্মা (Atma) - Soul/Spirit
+৫৬৬. ভূত (Bhut) - Ghost
+৫৬৭. জাদু (Jadu) - Magic
+৫৬৮. রহস্য (Rohossho) - Mystery
+৫৬৯. সন্ধান (Shondhan) - Search
+৫৭০. আবিষ্কার (Abishkar) - Discovery/Invention
+৫৭১. ভ্রমণ (Bhromon) - Travel
+৫৭২. যাত্রী (Jatri) - Passenger
+৫৭৩. চালক (Chalok) - Driver
+৫৭৪. নাগরিক (Nagorik) - Citizen
+৫৭৫. আইন (Ain) - Law
+৫৭৬. আদালত (Adalot) - Court
+৫৭৭. বিচার (Bichar) - Judgment
+৫৭৮. সাক্ষী (Shakkhi) - Witness
+৫৭৯. অপরাধ (Oporadh) - Crime
+৫৮০. পুলিশ (Police) - Police
+৫৮১. সৈন্য (Shoinno) - Soldier
+৫৮২. সেনাবাহিনী (Shenabahini) - Army
+৫৮৩. অস্ত্র (Ostro) - Weapon
+৫৮৪. বোমা (Boma) - Bomb
+৫৮৫. নিরাপত্তা (Nirapotta) - Security
+৫৮৬. বিপদ (Bipod) - Danger
+৫৮৭. দুর্ঘটনা (Durghotona) - Accident
+৫৮৮. আঘাত (Aghat) - Injury
+৫৮৯. ব্যথা (Byatha) - Pain
+৫৯০. চিকিৎসা (Chikitsa) - Treatment
+৫৯১. রক্ত (Rokto) - Blood
+৫৯২. ঘাম (Gham) - Sweat
+৫৯৩. অশ্রু (Oshru) - Tear
+৫৯৪. হাসি (Hashi) - Smile/Laughter
+৫৯৫. কান্না (Kanna) - Crying
+৫৯৬. শ্বাস (Shwash) - Breath
+৫৯৭. স্পর্শ (Sporsho) - Touch
+৫৯৮. অনুভূতি (Onubhuti) - Feeling
+৫৯৯. আবেগ (Abeg) - Emotion
+৬০০. চেতনা (Chetona) - Consciousness
+৬০১. স্মৃতি (Smriti) - Memory
+৬০২. কল্পনা (Kolpona) - Imagination
+৬০৩. বাস্তবতা (Bastobota) - Reality
+৬০৪. অবস্থান (Obosthan) - Position/Location
+৬০৫. পরিবেশ (Poribesh) - Environment
+৬০৬. প্রকৃতি (Prokriti) - Nature
+৬০৭. সৌন্দর্য (Shoundorjo) - Beauty
+৬০৮. শিল্পকলা (Shilpokola) - Fine Arts
+৬০৯. স্থাপত্য (Sthapotto) - Architecture
+৬১০. ভাস্কর্য (Bhashkorjo) - Sculpture
+৬১১. চিত্র (Chitro) - Picture/Painting
+৬১২. পোশাক (Poshak) - Dress/Attire
+৬১৩. অলঙ্কার (Olongkar) - Ornament
+৬১৪. আসবাব (Asbab) - Furniture
+৬১৫. যন্ত্রপাতি (Jontropati) - Machinery/Tools
+৬১৬. কৃষি (Krishi) - Agriculture
+৬১৭. ফসল (Foshol) - Crop
+৬১৮. বীজ (Bij) - Seed
+৬১৯. সার (Shar) - Fertilizer
+৬২০. সেচ (Shech) - Irrigation
+৬২১. শিল্প (Shilpo) - Industry
+৬২২. কারখানা (Karkhana) - Factory
+৬২৩. উৎপাদন (Utpadon) - Production
+৬২৪. আমদানি (Amdani) - Import
+৬২৫. রপ্তানি (Roptani) - Export
+৬২৬. লাভ (Labh) - Profit
+৬২৭. ক্ষতি (Khoti) - Loss
+৬২৮. আয় (Aay) - Income
+৬২৯. ব্যয় (Byay) - Expenditure
+৬৩০. কর (Kor) - Tax
+৬৩১. ঋণ (Rin) - Loan/Debt
+৬৩২. সুদ (Shud) - Interest
+৬৩৩. বিনিয়োগ (Biniyog) - Investment
+৬৩৪. ব্যাংক (Bank) - Bank
+৬৩৫. মুদ্রা (Mudra) - Currency/Coin
+৬৩৬. নির্বাচন (Nirbachon) - Election
+৬৩৭. ভোট (Bhot) - Vote
+৬৩৮. গণতন্ত্র (Gonotontro) - Democracy
+৬৩৯. স্বাধীনতা (Shadhinota) - Freedom
+৬৪০. অধিকার (Odhikar) - Right
+৬৪১. সংবাদ (Shongbad) - News
+৬৪২. সংবাদপত্র (Shongbadpotro) - Newspaper
+৬৪৩. পত্রিকা (Potrika) - Magazine
+৬৪৪. টেলিভিশন (Television) - Television
+৬৪৫. বেতার (Betar) - Radio
+৬৪৬. ইন্টারনেট (Internet) - Internet
+৬৪৭. ওয়েবসাইট (Website) - Website
+৬৪৮. তথ্য (Tothyo) - Information
+৬৪৯. প্রযুক্তি (Projukti) - Technology
+৬৫০. ভবিষ্যৎ (Bhobishshot) - Future
+৬৫১. মুহূর্ত (Muhurto) - Moment
+৬৫২. যুগ (Jug) - Era/Age
+৬৫৩. শতাব্দী (Shotabdi) - Century
+৬৫৪. জন্মদিন (Jonmodin) - Birthday
+৬৫৫. বিবাহ (Bibaho) - Marriage
+৬৫৬. মৃত্যুবার্ষিকী (Mrittubarshiki) - Death anniversary
+৬৫৭. অনুষ্ঠান (Onushthan) - Ceremony/Program
+৬৫৮. আমন্ত্রণ (Amontron) - Invitation
+৬৫৯. তালিকা (Talika) - List
+৬৬০. হিসাব (Hishab) - Account/Calculation
+৬৬১. পরীক্ষা (Porikkha) - Examination
+৬৬২. প্রস্তুতি (Prostuti) - Preparation
+৬৬৩. মনোযোগ (Monojog) - Attention
+৬৬৪. আগ্রহ (Agroho) - Interest
+৬৬৫. কৌতূহল (Koutuhol) - Curiosity
+৬৬৬. ধৈর্য (Dhoirjo) - Patience
+৬৬৭. অহংকার (Ohongkar) - Pride/Arrogance
+৬৬৮. বিনয় (Binoy) - Modesty
+৬৬৯. দয়া (Doya) - Kindness
+৬৭০. হিংসা (Hingsha) - Jealousy/Violence
+৬৭১. লোভ (Lobh) - Greed
+৬৭২. মোহ (Moho) - Attachment/Illusion
+৬৭৩. ক্রোধ (Krodh) - Anger
+৬৭৪. ভয়ংকর (Bhoyonkor) - Terrible
+৬৭৫. চমৎকার (Chomotkar) - Wonderful
+৬৭৬. সাধারণ (Shadharon) - Ordinary
+৬৭৭. অসাধারণ (Oshadharon) - Extraordinary
+৬৭৮. আবশ্যক (Abosshok) - Necessary
+৬৭৯. অপ্রয়োজনীয় (Oproyojoniyo) - Unnecessary
+৬৮০. সম্ভব (Shombhob) - Possible
+৬৮১. অসম্ভব (Oshombhob) - Impossible
+৬৮২. পরিচিত (Porichito) - Known/Acquainted
+৬৮৩. অপরিচিত (Oporichito) - Unknown/Stranger
+৬৮৪. উপস্থিত (Upisthit) - Present
+৬৮৫. অনুপস্থিত (Onuposthit) - Absent
+৬৮৬. জীবিত (Jibito) - Alive
+৬৮৭. মৃত (Mrito) - Dead
+৬৮৮. স্বাস্থ্যকর (Shasthyokor) - Healthy
+৬৮৯. অস্বাস্থ্যকর (Oshasthyokor) - Unhealthy
+৬৯০. শিক্ষিত (Shikkhito) - Educated
+৬৯১. অশিক্ষিত (Oshikkhito) - Uneducated
+৬৯২. সভ্য (Shobbho) - Civilized
+৬৯৩. অসভ্য (Oshobbho) - Uncivilized
+৬৯৪. ধার্মিক (Dharmik) - Religious
+৬৯৫. অধার্মিক (Odharmik) - Irreligious
+৬৯৬. ধনী (Dhoni) - Rich
+৬৯৭. গরিব (Gorib) - Poor
+৬৯৮. সাহসী (Shahoshi) - Brave
+৬৯৯. ভীরু (Bhiru) - Cowardly
+৭০০. সৎ (Shot) - Honest
+৭০১. অসৎ (Oshot) - Dishonest
+৭০২. জ্ঞানী (Gyani) - Wise
+৭০৩. মূর্খ (Murkho) - Foolish
+৭০৪. চালাক (Chalak) - Clever
+৭০৫. বোকা (Boka) - Stupid
+৭০৬. পরিশ্রমী (Porishromi) - Hardworking
+৭০৭. অলস (Olos) - Lazy
+৭০৮. বিশ্বস্ত (Bishwosto) - Loyal/Trustworthy
+৭০৯. অবিশ্বস্ত (Obishwosto) - Disloyal
+৭১০. আন্তরিক (Antorik) - Sincere/Heartfelt
+৭১১. আনুষ্ঠানিক (Anushthanik) - Formal
+৭১২. অনানুষ্ঠানিক (Onaunushthanik) - Informal
+৭১৩. ব্যক্তিগত (Byaktigoto) - Personal
+৭১৪. সরকারি (Sorkari) - Governmental
+৭১৫. বেসরকারি (Besorkari) - Private
+৭১৬. আইনত (Ainto) - Legal
+৭১৭. বেআইনি (Beaini) - Illegal
+৭১৮. নিয়মিত (Niyomito) - Regular
+৭১৯. অনিয়মিত (Oniyomito) - Irregular
+৭২০. দৈনিক (Doinik) - Daily
+৭২১. সাপ্তাহিক (Shaptahik) - Weekly
+৭২২. মাসিক (Mashik) - Monthly
+৭২৩. বার্ষিক (Barshik) - Yearly
+৭২৪. চিরকাল (Chirokal) - Forever
+৭২৫. হঠাৎ (Hothat) - Suddenly
+৭২৬. প্রায় (Pray) - Almost
+৭২৭. সম্ভবত (Shombhoboto) - Probably
+৭২৮. অবশ্যই (Obosshoi) - Definitely
+৭২৯. মোটেই না (Motei na) - Not at all
+৭৩০. যথেষ্ট (Jotheshto) - Enough
+৭৩১. সামান্য (Shamanno) - Trivial/Slight
+৭৩২. পুরোপুরি (Puropuri) - Completely
+৭৩৩. আংশিক (Angshik) - Partial
+৭৩৪. একসাথে (Ekshathe) - Together
+৭৩৫. আলাদা (Alada) - Separate
+৭৩৬. দ্রুত (Druto) - Quickly
+৭৩৭. ধীরে (Dhire) - Slowly
+৭৩৮. জোরে (Jore) - Loudly/Forcefully
+৭৩৯. আস্তে (Aste) - Quietly/Slowly
+৭৪০. সহজে (Shohoje) - Easily
+৭৪১. কঠিনভাবে (Kothinbhabe) - With difficulty
+৭৪২. ভালোভাবে (Bhalobhabe) - Well
+৭৪৩. খারাপভাবে (Kharpbhabe) - Badly
+৭৪৪. স্পষ্টভাবে (Sposhtobhabe) - Clearly
+৭৪৫. সংক্ষেপে (Shongkhepe) - Briefly
+৭৪৬. বিস্তারিতভাবে (Bistaritobhabe) - In detail
+৭৪৭. প্রধানত (Pradhanoto) - Mainly
+৭৪৮. বিশেষত (Bishesoto) - Especially
+৭৪৯. অন্তত (Ontoto) - At least
+৭৫০. বরং (Borong) - Rather
