@@ -115,7 +115,7 @@ def k_hop_dijkstra(
   Returns the path as a list of k field names (one per line),
   or None if no valid path exists.
 
-  Time complexity: O(k * |V|^2) — fine for |V|=9, k<=8.
+  Time complexity: O(k * |V|^2) — fine for |V|=9, k<=8 ig.
   """
   # dist[(node, layer)] = best cost to reach this state
   dist: Dict[tuple, int] = {(start, 0): 0}
@@ -169,10 +169,6 @@ def plan_field_trajectory(num_lines: int, start: str = "NATURE") -> List[str]:
     )
   return path
 
-
-# ─────────────────────────────────────────────────────────────
-# Quick sanity check
-# ─────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
   graph = build_graph()
