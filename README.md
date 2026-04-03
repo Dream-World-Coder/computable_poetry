@@ -1,73 +1,148 @@
 # Computable Poetry
 
-A Bangla poem generator built entirely from formal grammars, graph algorithms, and constraint satisfaction. No machine learning anywhere in the pipeline.
-
-The system treats a poem as a sentence in a formally defined language. Generation is language inversion: given a grammar that accepts all valid poems, run it in reverse to produce one.
+**Generating metrically correct, semantically plausible Bangla poems using formal grammars, constraint satisfaction, and graph-based planning. No machine learning anywhere in the pipeline.**
 
 ---
 
-## The Problem
+## Overview
 
-Bangla classical poetry is governed by a precise prosodic system called Chhondo. Every word carries a numerical weight (matra), and lines are composed so that the matra total of each rhythmic unit matches a fixed pattern exactly. There are three metres: Swarabritta (lightest), Matrabritta (medium), and Aksharabritta (heaviest). The system auto-detects which metre applies from the input pattern and treats its constraints as inviolable generation boundaries.
+This project treats Bangla poem generation as a formal language inversion problem. A compiler takes source text, validates it against formal rules, and produces structured output. This system runs that process in reverse: it starts from formal rules and produces text. The same stages apply — lexer, parser, code generator — just pointed in the other direction.
+
+The result is a system that guarantees three properties by construction: every poem satisfies its declared mātrā pattern exactly, maintains a globally coherent thematic arc across lines, and produces ABAB end-rhyme. These guarantees hold not probabilistically but provably, as consequences of the formal structure.
+
+---
+
+## The Core Problem
+
+Start with the simplest possible approach: build a database of Bangla words, store the mātrā of each word, and pick matching ones at random to fill the pattern slots. This generates metrically correct output. It does not generate poems.
+
+Metre without meaning is a crossword puzzle. The grid is filled correctly, but nothing is being said. The solution is layered constraint satisfaction: metre first, then semantic field, then part of speech, then rhyme class. No single constraint produces a poem. The poem emerges from their intersection.
+
+---
+
+## Bangla Prosody
+
+Bangla poetry is governed by **Chhondo** (ছন্দ), the science of poetic metre. Every word carries a numerical weight called **mātrā**, and a line is composed so that the total mātrā of each rhythmic unit — a **parba** — matches a fixed pattern. The system handles all three classical metres:
+
+| Metre | Weight Rule | Typical Pattern |
+|---|---|---|
+| Swarabritta (স্বরবৃত্ত) | All syllables count as 1 | 4 \| 4 \| 4 \| 2 |
+| Matrabritta (মাত্রাবৃত্ত) | Open syllable = 1, closed = 2 | 6 \| 6 \| 6 \| 4 |
+| Aksharabritta (অক্ষরবৃত্ত) | Closed at word-end = 2, elsewhere = 1 | 8 \| 8 \| 8 \| 6 |
+
+The metre is auto-detected from the input pattern string and enforced as an inviolable hard constraint throughout generation. mātrā is never relaxed at any stage.
 
 ---
 
 ## Architecture
 
-The pipeline maps directly onto compiler stages.
+The generation system is five modules, each corresponding to a classical compiler stage, composed strictly in pipeline order. No module reaches backward into a previous stage.
 
-**Lexer.** The word database stores inflected forms directly, not stems, so matra is always accurate without runtime computation. Each entry carries its syllable breakdown, matra values per metre, POS tag, semantic tag, tag family, grammatical role, and rhyme class. An inverted index keyed by (semantic tag, matra) supports O(1) candidate lookup.
+```
+LEXICON → SEMANTIC_GRAPH → CFG → WORD_PICKER → POEM_ENGINE
+```
 
-**Field Planner.** Before any words are chosen, Dijkstra runs on a layered directed graph to find the lowest-cost path of exactly k hops across semantic field families (NATURE, LIGHT, MOTION, SOUND, EMOTION, and so on), where k equals the number of lines. Edge weights are derived from a formal function using set membership in predefined SENSORY and INNER partitions and a declared set of natural poetic pairs. The planner assigns one thematic field per line and hands that sequence to the grammar.
+### 1. Lexicon
 
-**Line Structurer.** A two-level CFG expands each line. The upper level is a semantic grammar: productions like LINE → SETTING MOTION_PHRASE, constrained to the field Dijkstra assigned. The lower level is a standard POS grammar. Each terminal in the derivation becomes a typed slot carrying its matra budget, semantic tag, POS requirement, grammatical role, and rhyme constraint.
+The foundation everything else sits on. Given a semantic tag and a mātrā number, it returns every word in the database satisfying both constraints in O(1) time.
 
-**Codegen.** Slot filling queries the inverted index, filters by POS and rhyme class, applies a poem-scoped memory set to prevent repetition, and falls back through a tag hierarchy (specific tag → tag family → relaxed POS → backtrack) if any candidate set is empty. Constraint priority is strict: matra is never relaxed.
+The lexicon stores inflected forms directly rather than root words. This is a deliberate design choice: grammatical suffixes change the mātrā, so storing roots and applying suffixes at runtime would require recomputing mātrā for every candidate on every slot fill. By storing inflected forms, the mātrā in the database is always the mātrā of the actual word that will appear in the poem.
+
+Two in-memory indices are built once at startup and then only read:
+
+- **Inverted index**: keyed by `(TAG, mātrā)` pairs, enabling single-dictionary-lookup candidate retrieval
+- **Rhyme index**: keyed by rhyme class character, consulted only when a rhyme constraint is active
+
+When a `(TAG, mātrā)` bucket is empty, a hierarchical fallback chain walks through sibling tags in the same family, then cross-family neighbours. At every step, only the tag changes — the mātrā stays fixed.
+
+The lexicon was built from a tagged, inflected-form corpus scraped from 300+ classical Bangla poems.
+
+### 2. Semantic Graph
+
+Before a single word is chosen, the system decides what each line of the poem will be about. The semantic graph answers: given that the poem starts in field X and must end in a resolved field in exactly k lines, what is the most coherent thematic sequence of fields to traverse?
+
+The nine semantic families are divided into two partitions:
+
+**Sensory partition** (external observable world): NATURE, LIGHT, TIME, MOTION, SOUND, DESCRIPTOR
+
+**Inner partition** (felt or imagined experience): EMOTION, ACTOR
+
+CONNECTOR sits outside both and acts as a cheap bridge.
+
+Edge weights are derived from a formal metric rather than declared by hand. The rules are:
+
+- CONNECTOR edges always cost 1
+- Declared natural poetic pairs cost 2 (e.g., NATURE–LIGHT, SOUND–EMOTION, LIGHT–EMOTION)
+- Sensory-to-sensory transitions cost 3
+- Sensory-to-inner crossings cost 4
+
+A greedy path selection would be locally optimal at each step but may never reach a resolved field by the final line. The system instead applies **k-hop Dijkstra** on a layered directed graph, treating the state as `(field, line_index)`. It finds the globally minimum-cost path of exactly k steps that terminates in EMOTION or SOUND. Paths ending at non-resolved fields are discarded regardless of cost.
+
+### 3. Context-Free Grammar
+
+The semantic graph produces a field sequence like `[NATURE, MOTION, SOUND, EMOTION]`. The CFG turns each field name into a concrete sequence of typed slot specifications — one slot per parba — that the word picker can fill.
+
+This is a two-level grammar: a semantic grammar above a standard POS grammar. For each semantic family, the CFG declares a list of productions encoding real knowledge about how lines in that field are typically composed in Bengali nature poetry. A NATURE production might specify: colour adjective, sky noun, gentle verb, water noun. These structural intuitions are baked into the productions, not inferred.
+
+Productions are expanded via randomized recursive descent. On a line retry, the CFG selects a fresh production — yielding different tag and POS slot configurations — rather than simply retrying the same slots with different words.
+
+Every production is validated at startup to have exactly as many pairs as there are parbas in the mātrā pattern. A mismatch raises an error immediately.
+
+### 4. Word Picker
+
+The word picker is a constraint satisfaction engine with strict priority ordering and structured relaxation. It fills each slot through six ordered passes, each representing a different combination of active constraints:
+
+1. Exact tag + exact POS + rhyme match (tightest)
+2. Exact tag + exact POS (rhyme dropped)
+3. Exact tag, POS relaxed
+4. Sibling tag fallback + exact POS
+5. Sibling tag fallback, POS relaxed
+6. Full cross-family fallback, POS relaxed
+
+The first pass returning a non-empty candidate set wins; a random choice is made from that set. mātrā is not listed among the passes because it is a precondition for entering any candidate set at all.
+
+### 5. Poem Engine
+
+The orchestrator. It parses the input pattern string, detects the Chhondo, initialises all components in sequence, and runs the generation loop. Two nested retry loops manage failures: up to 10 retries per line (each with a fresh CFG production), and up to 5 retries for the whole poem.
+
+Rhyme state is carried in a single variable updated after each odd-indexed line and consumed by the next even-indexed line. The ABAB scheme emerges from this state machine with no special-casing required.
 
 ---
 
-## Constraint Satisfaction
+## What the System Guarantees
 
-Generation operates under four levels of constraint, applied in priority order.
+**Metric correctness.** Every parba has exactly the mātrā declared in the pattern. mātrā is a precondition for entry into any candidate set and is never relaxed at any stage.
 
-Matra is the hardest constraint. A line with the wrong syllable weight is metrically broken and no other consideration overrides it.
+**Thematic coherence.** The field sequence is the globally optimal Dijkstra path, not a random walk. Adjacent lines are always semantically related, and the poem ends in a resolved field.
 
-Semantic tag comes second. Words are drawn from the field the planner assigned. If the exact tag has no candidates at the required matra, the system climbs the tag family hierarchy.
+**ABAB rhyme.** The last word of every even line shares its final vowel sound with the last word of the previous odd line. The rhyme slot constraint is applied before any word is selected for that position.
 
-POS compatibility is third. A verb slot expects a verb. This constraint can be relaxed during fallback.
-
-Rhyme class is softest. The final slot of each even line is constrained to the rhyme class of the matching odd line's last word. ABAB scheme falls out of the filter naturally.
+What the system does not guarantee is literary quality in the human sense. Those properties emerge from the quality and coverage of the lexicon, the breadth of the semantic productions, and the accumulated knowledge encoded in the seed lists and natural-pair declarations. The formal system provides the skeleton. The lexicon and grammar fill it with meaning.
 
 ---
 
-## Semantic Distance and the Graph
+## What This System Is Not
 
-Families form the graph nodes. The compute_weight function assigns an edge cost based on two rules: whether the pair belongs to the declared NATURAL_PAIRS set (cost 2), and whether the traversal crosses the SENSORY/INNER partition boundary (sensory to sensory costs 3, inner to inner costs 2, crossing costs 4). CONNECTOR nodes always cost 1 in both directions. No manual per-edge judgment is involved once the partition and pair set are declared.
+**Not a general-purpose poem generator.** The system is intentionally scoped to one scenario — nature, cheerful and resolved — because depth within a narrow boundary produces more interesting output than shallow coverage of a wide one. Generalising to arbitrary scenarios is an extension, not a correction.
 
----
-
-## Lexicon Preparation
-
-Words are scraped from 300 to 500 classical Bangla nature poems and tagged in three tiers. A seed list covers roughly 60 percent of stems automatically. POS-based heuristics handle another 20 percent as pre-filled defaults for review. The remaining words go through a CLI review tool at approximately 3 seconds per word. Since inflected forms are stored directly, a single seed entry covers all grammatical variants of a stem.
+**Not a machine learning system.** Every weight, every rule, every fallback chain is declared explicitly. There is no training, no inference, no embedding space. The intelligence is in the formal structure. This is the point.
 
 ---
 
-## What Is Working
+## Technical Summary
 
-Matra calculation for all three metres, Chhondo auto-detection from input pattern, pattern splitting into rhythmic slots, POS-level CFG generation, inverted index structure, rhyme class matching by final phoneme, and the core constraint priority ordering.
-
-The semantic tag layer, Dijkstra field planner, full backtracking engine, and poem-scoped memory set are implemented and being integrated. Word scraping from nature poems and full lexicon tagging are ongoing.
-
----
-
-## Design Rationale
-
-Inflected forms are stored rather than stems because matra depends on the actual surface form. Computing matra from a stem plus suffix at runtime would require recomputing it for every candidate on every slot fill and introduce edge cases at morpheme boundaries.
-
-Dijkstra is used rather than a fixed trajectory list because a static field sequence cannot generalise across different line counts or patterns. The layered graph produces the globally optimal coherence path for any k-line poem.
-
-The two-level CFG exists because Bangla poetic language regularly violates standard syntax: inverted word order, noun-used-as-verb, ellipsis. Treating POS grammar as a hard constraint produces stilted output. The semantic grammar constrains meaning; POS is a secondary filter that can be relaxed when needed.
+- **Language**: Python
+- **Method**: Formal grammars, constraint satisfaction, graph-based planning
+- **ML used**: None
+- **Prosody systems**: Swarabritta, Matrabritta, Aksharabritta
+- **Lookup complexity**: O(1) candidate retrieval via inverted index
+- **Path planning**: k-hop Dijkstra on a layered directed semantic graph
+- **Rhyme scheme**: ABAB, enforced structurally
 
 ---
 
-A formally defined language over matra, semantics, and syntax. Constraint satisfaction and graph planning operating together, without any learned parameters.
+*Structured randomness, operating within hard prosodic constraints and soft semantic constraints, with graph-based planning for cross-line coherence. No AI. Just form.*
+
+**Code**: [github.com/Dream-World-Coder/computable_poetry](https://github.com/Dream-World-Coder/computable_poetry)
+
+*Project by M E, under the guidance of Prof. Sukanta Das. December 2025 – Present.*
