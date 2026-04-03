@@ -6,5 +6,10 @@ __py*
 
 venv/
 node_modules/
+
 resources
 poems/extracted
+
+db
+passage.txt
+passage_*.txt
