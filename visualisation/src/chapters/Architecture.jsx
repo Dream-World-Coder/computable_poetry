@@ -8,6 +8,7 @@ import {
   H3,
 } from "../components/components";
 import { LayeredGraphDiagram } from "../animations/LayerdGraph";
+import { PoemEngineAnimation } from "../animations/Engine";
 
 // helpers
 function Note({ children }) {
@@ -1145,10 +1146,7 @@ words = picker.fill_line(slots, poem_used, rhyme_class="অ")
 #   rhyme: "বন" ends in "অ" sound ✓`}
       </Code>
 
-      <Placeholder
-        label="Animation: full poem generation — trajectory → slots → words, line by line"
-        height={240}
-      />
+      <PoemEngineAnimation />
 
       <SubLabel>What the system guarantees</SubLabel>
       <P>

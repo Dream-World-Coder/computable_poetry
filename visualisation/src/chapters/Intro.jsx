@@ -22,7 +22,18 @@ export function ChapterIntro() {
           marginBottom: "2.5rem",
         }}
       >
-        A project by me under the guidance of Prof. Sukanta Das Sir
+        A project by
+        <a href="https://subhajitgorai.pages.dev">
+          {" "}
+          <span className="underline decoration-dashed">me</span>{" "}
+        </a>
+        under the guidance of
+        <a href="https://www.iiests.ac.in/IIEST/Faculty/it-sukanta">
+          {" "}
+          <span className="underline decoration-dashed">
+            Prof. Sukanta Das Sir
+          </span>
+        </a>
       </div>
 
       <h1
