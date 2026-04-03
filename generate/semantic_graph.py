@@ -46,10 +46,8 @@ FAMILIES: List[str] = [
 # Resolved families for cheerful/nature tone — poem should end here
 RESOLVED: frozenset = frozenset({"EMOTION", "SOUND"})
 
-# ─────────────────────────────────────────────────────────────
 # Weight function — fully derived, zero manual per-edge judgment
 # ─────────────────────────────────────────────────────────────
-
 def compute_weight(a: str, b: str) -> int:
   """
   Derive edge weight from set membership alone.
@@ -94,10 +92,8 @@ def build_graph() -> Dict[str, Dict[str, int]]:
   return graph
 
 
-# ─────────────────────────────────────────────────────────────
 # K-hop Dijkstra on layered graph
 # ─────────────────────────────────────────────────────────────
-
 def k_hop_dijkstra(
   graph:    Dict[str, Dict[str, int]],
   start:    str,
@@ -151,10 +147,8 @@ def k_hop_dijkstra(
   return best_path
 
 
+# plan a full poem's field trajectory
 # ─────────────────────────────────────────────────────────────
-# Convenience — plan a full poem's field trajectory
-# ─────────────────────────────────────────────────────────────
-
 def plan_field_trajectory(num_lines: int, start: str = "NATURE") -> List[str]:
   """
   Run k-hop Dijkstra and return the field sequence for the poem.

@@ -15,17 +15,16 @@ from dataclasses import dataclass, field
 from typing import List, Dict, Optional
 
 
-# ─────────────────────────────────────────────────────────────
 # Slot — the unit the word picker fills
 # ─────────────────────────────────────────────────────────────
 
 @dataclass
 class Slot:
-  tag:      str      # semantic tag e.g. "NATURE_WATER"
-  pos:      str      # POS tag e.g. "NN", "VB"
-  matra:      int      # mātrā budget for this slot (inviolable)
+  tag: str # semantic tag e.g. "NATURE_WATER"
+  pos: str # POS tag e.g. "NN", "VB"
+  matra: int # mātrā budget for this slot (inviolable)
   is_rhyme_slot: bool = False  # True for last slot of even lines
-  rhyme_class:  Optional[str] = None  # set by word picker at runtime
+  rhyme_class: Optional[str] = None  # set by word picker at runtime
 
 
 # ─────────────────────────────────────────────────────────────
@@ -224,7 +223,6 @@ SEMANTIC_PRODUCTIONS: Dict[str, List[List[tuple]]] = {
 }
 
 
-# ─────────────────────────────────────────────────────────────
 # CFG engine
 # ─────────────────────────────────────────────────────────────
 

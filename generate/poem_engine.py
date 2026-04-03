@@ -58,10 +58,8 @@ class PoemEngine:
     self.cfg     = CFG(self.matra_pattern)
     self.picker    = WordPicker(self.lexicon)
 
-  # ─────────────────────────────────────────────────────────
   # Rhyme class extraction
   # ─────────────────────────────────────────────────────────
-
   def _get_rhyme_class(self, word: str) -> str:
     """Extract rhyme class from a word — last vowel sound."""
     ALL_VOWELS = set("অআইঈউঊঋএঐওঔ") | set("ািীুূৃেৈোৌ")
@@ -70,10 +68,8 @@ class PoemEngine:
         return ch
     return word[-1] if word else ""
 
-  # ─────────────────────────────────────────────────────────
   # Single line generation
   # ─────────────────────────────────────────────────────────
-
   def _generate_line(
     self,
     family:    str,
@@ -96,10 +92,8 @@ class PoemEngine:
 
     return None   # failed after all retries
 
-  # ─────────────────────────────────────────────────────────
   # Full poem generation
   # ─────────────────────────────────────────────────────────
-
   def generate(
     self,
     num_lines:  int  = 4,
@@ -166,10 +160,8 @@ class PoemEngine:
     )
 
 
-# ─────────────────────────────────────────────────────────────
 # CLI entry point
 # ─────────────────────────────────────────────────────────────
-
 def main():
   import argparse
 

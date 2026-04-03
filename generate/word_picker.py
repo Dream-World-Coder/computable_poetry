@@ -20,10 +20,8 @@ class WordPicker:
   def __init__(self, lexicon: Lexicon):
     self.lexicon = lexicon
 
+  # helpers
   # ─────────────────────────────────────────────────────────
-  # Internal helpers
-  # ─────────────────────────────────────────────────────────
-
   def _filter_pos(self, candidates: list, pos: str) -> list:
     filtered = [w for w in candidates if w.get("POS") == pos]
     return filtered if filtered else []
@@ -36,10 +34,8 @@ class WordPicker:
     matched = [w for w in candidates if w.get("rhyme_class") == rhyme_class]
     return matched if matched else []
 
-  # ─────────────────────────────────────────────────────────
   # Core pick logic for one slot
   # ─────────────────────────────────────────────────────────
-
   def pick(
     self,
     slot:    Slot,
@@ -110,10 +106,8 @@ class WordPicker:
     # truly failed — signal backtrack
     return None
 
-  # ─────────────────────────────────────────────────────────
   # Fill a full line of slots
   # ─────────────────────────────────────────────────────────
-
   def fill_line(
     self,
     slots:     List[Slot],

@@ -7,9 +7,9 @@ import {
   P,
   H3,
 } from "../components/components";
+import { LayeredGraphDiagram } from "../animations/LayerdGraph";
 
-// ─────────────────────────────────────────────
-// Small local helpers that extend the design system
+// helpers extending the design system
 // ─────────────────────────────────────────────
 
 function Note({ children }) {
@@ -148,9 +148,9 @@ export function ChapterArchitecture() {
       </P>
 
       <Code lang="json">
+        {/* "stem":     "নদী",*/}
         {`{
     "word":     "নদীতে",
-    "stem":     "নদী",
     "syllables": ["ন", "দী", "তে"],
     "totalMatra": {
         "স্বরবৃত্ত":   4,
@@ -521,10 +521,7 @@ def k_hop_dijkstra(graph, start, resolved, k):
         accepted as valid. Among those, the lowest total cost wins.
       </Note>
 
-      <Placeholder
-        label="Diagram: layered graph showing states (field, layer) and the optimal path for a 4-line poem"
-        height={240}
-      />
+      <LayeredGraphDiagram />
 
       <P>
         The output of this stage is a plain list of field names — one per line

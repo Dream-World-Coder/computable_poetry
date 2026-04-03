@@ -112,7 +112,6 @@ class Lexicon:
         self.rhyme_index[rc] = []
       self.rhyme_index[rc].append(entry)
 
-  # ─────────────────────────────────────────────────────────
   # Public lookup
   # ─────────────────────────────────────────────────────────
 
@@ -172,10 +171,6 @@ class Lexicon:
     for m in sorted(matra_counts):
       print(f"  matra={m}  {matra_counts[m]:4d} words")
 
-
-# ─────────────────────────────────────────────────────────────
-# Quick sanity check
-# ─────────────────────────────────────────────────────────────
 
 if __name__ == "__main__":
   import sys
