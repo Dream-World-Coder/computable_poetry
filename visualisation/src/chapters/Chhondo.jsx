@@ -1,10 +1,5 @@
-import {
-  Placeholder,
-  SectionLabel,
-  P,
-  H3,
-  MatraBox,
-} from "../components/components";
+import { SyllableVisualizer } from "../animations/SyllableVisualiser";
+import { SectionLabel, P, H3, MatraBox } from "../components/components";
 
 export function ChapterChhondo() {
   return (
@@ -114,10 +109,7 @@ export function ChapterChhondo() {
         final consonant.
       </P>
 
-      <Placeholder
-        label="Visualisation: syllable type classification with examples"
-        height={180}
-      />
+      <SyllableVisualizer />
 
       <H3>Rhyme through matching mātrā</H3>
       <P>

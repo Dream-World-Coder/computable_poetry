@@ -9,7 +9,13 @@ non core:
   -> update website & data
   -> add animations in website
 
-
+reason for current less meaningfulness:
+  -> even though i tried to narrow down on nature appreciative poems only the words i scraped are
+  related to whole nature related, both happy and sad. still 288 poems. its hard go get a collection of
+  poems in that narrowed down space, unless i manually pick
+  -> my cfg, coherance, tagging algo are made for a narrowed down space only, so most of the words are wrongly tagged I think. so wrong kinda word pick
+  -> tagging is accurate for ~1.5k-2k / 14k (10.2k approx after removing UNTAGGED) words only
+  -> bad cfg / tags
 
 
 

@@ -1,11 +1,5 @@
-import {
-  Placeholder,
-  Tag,
-  Pull,
-  SectionLabel,
-  P,
-  H3,
-} from "../components/components";
+import { ThreeLayersDiagram } from "../animations/ThreeLayersDiagram";
+import { Tag, Pull, SectionLabel, P, H3 } from "../components/components";
 
 export function ChapterProblem() {
   return (
@@ -43,10 +37,7 @@ export function ChapterProblem() {
         tagged according to what semantic role it plays within that scenario.
       </P>
 
-      <Placeholder
-        label="Diagram: the three layers — metre, grammar, semantics"
-        height={220}
-      />
+      <ThreeLayersDiagram />
 
       <H3>The formal solution</H3>
       <P>

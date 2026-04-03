@@ -1,10 +1,5 @@
-import {
-  Placeholder,
-  Pull,
-  SectionLabel,
-  P,
-  H3,
-} from "../components/components";
+import { PatternMeaningSpectrum } from "../animations/PatternMeaning";
+import { Pull, SectionLabel, P, H3 } from "../components/components";
 
 export function ChapterPoem() {
   return (
@@ -38,10 +33,7 @@ export function ChapterPoem() {
         poem. The poem emerges from their intersection.
       </P>
 
-      <Placeholder
-        label="Animation: pattern vs meaning spectrum"
-        height={160}
-      />
+      <PatternMeaningSpectrum />
 
       <H3>The compiler analogy</H3>
       <P>

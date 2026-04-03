@@ -9,9 +9,7 @@ import {
 } from "../components/components";
 import { LayeredGraphDiagram } from "../animations/LayerdGraph";
 
-// helpers extending the design system
-// ─────────────────────────────────────────────
-
+// helpers
 function Note({ children }) {
   return (
     <div

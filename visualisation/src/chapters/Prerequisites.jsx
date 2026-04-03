@@ -1,11 +1,5 @@
-import {
-  Code,
-  Placeholder,
-  Tag,
-  SectionLabel,
-  P,
-  H3,
-} from "../components/components";
+import { MatraAssignmentAnimation } from "../animations/MatraAssignment";
+import { Code, Tag, SectionLabel, P, H3 } from "../components/components";
 
 export function ChapterPrerequisites() {
   return (
@@ -68,10 +62,7 @@ pattern = f'{c}{v}{c}|{c}{{2}}{v}|{c}{v}|{v}{c}'`}
     return total`}
       </Code>
 
-      <Placeholder
-        label="Animation: word → syllables → mātrā assignment"
-        height={180}
-      />
+      <MatraAssignmentAnimation />
 
       <H3>Tagging</H3>
       <P>
