@@ -1,3 +1,5 @@
+<img src="./images/graph.png" alt="planner graph"/>
+
 # Computable Poetry
 
 **Generating metrically correct, semantically plausible Bangla poems using formal grammars, constraint satisfaction, and graph-based planning. No machine learning anywhere in the pipeline.**
@@ -145,4 +147,4 @@ What the system does not guarantee is literary quality in the human sense. Those
 
 **Code**: [github.com/Dream-World-Coder/computable_poetry](https://github.com/Dream-World-Coder/computable_poetry)
 
-*Project by M E, under the guidance of Prof. Sukanta Das. December 2025 – Present.*
+*Project by ME, under the guidance of Prof. Sukanta Das. December 2025 – Present.*
